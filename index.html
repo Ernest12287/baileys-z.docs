@@ -3,109 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baileys-z Introduction and Details</title>
+    <title>Baileys-z Documentation | Ernest Tech House</title>
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="shortcut icon" href="./images/social_card.jpeg" type="image/x-icon">
 </head>
 <body>
     
-    <nav class="navbar" style="padding: 10px 20px; background-color: #333; color: white;">
-        <span style="font-size: 1.5em; font-weight: bold;">Baileys-z Docs</span>
-        <div style="float: right;">
-            <a href="index.html" style="color: white; margin-left: 15px; text-decoration: none;">Home</a>
-            <a href="./pages/instalation.html" style="color: white; margin-left: 15px; text-decoration: none;">Installation</a>
-            <a href="./pages/initialize.html" style="color: white; margin-left: 15px; text-decoration: none;">Initialization</a>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <span class="nav-brand">Baileys-z Docs</span>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="./pages/instalation.html" class="nav-link">Installation</a>
+                <a href="./pages/initialize.html" class="nav-link">Initialization</a>
+            </div>
         </div>
     </nav>
     
-    <div class="header-image" style="text-align: center; margin: 20px 0;">
-        <img src="../images/social_card.jpeg" alt="Baileys-z Logo" style="max-width: 150px; height: auto; border-radius: 10px;">
+    <!-- Header Image -->
+    <div class="header-image">
+        <img src="./images/social_card.jpeg" alt="Baileys-z Logo">
     </div>
     
-    <h1>Baileys-z Introduction and Details</h1>
+    <!-- Work in Progress Banner -->
+    <div class="wip-banner">
+        <strong>📝 Work in Progress:</strong> This documentation is actively being developed. Some links may not be live yet. Check back soon for updates!
+    </div>
 
-    <blockquote style="border-left: 5px solid #007bff; padding: 10px 20px; background-color: #e9f7ff; margin: 20px 0;">
-        <h3>⭐ DOCUMENTATION FOCUS: EXTREME DETAIL ⭐</h3>
-        <p>
-            This documentation is focused on providing **every single tiny detail** you need. We explain **line-by-line** what the code does, why it matters, and how to maintain a stable bot. This is not a quick-start guide; it's a **Developer's Blueprint**.
-        </p>
-    </blockquote>
+    <main class="content">
+        <!-- Main Title -->
+        <h1>Baileys-z: The Developer's Blueprint</h1>
 
-    <p>
-        Hello everyone and welcome to this documentation. The production of this document is aimed to be **very detailed** and also provide **real examples and code snippets** for **Baileys-z**.
-    </p>
+        <!-- Focus Callout -->
+        <div class="callout-box">
+            <h3>⭐ DOCUMENTATION FOCUS: EXTREME DETAIL ⭐</h3>
+            <p>
+                This documentation provides <strong>every single detail</strong> you need. We explain <strong>line-by-line</strong> what the code does, why it matters, and how to maintain a stable bot. This isn't a quick-start guide—it's a <strong>Developer's Blueprint</strong> designed for serious WhatsApp automation.
+            </p>
+        </div>
 
-    <p>
-        **Ernest Tech House**, run by Pease Ernest, is proud to present to you a **highly maintained Baileys-z library**.
-    </p>
+        <!-- Introduction -->
+        <section class="intro-section">
+            <p>
+                Welcome to the official documentation for <strong>Baileys-z</strong>, brought to you by <strong>Ernest Tech House</strong> and maintained by <strong>Pease Ernest</strong>.
+            </p>
 
-    <p>
-        The library was made so that people can tell me (**peaseernest**) what bugs they are experiencing, and I can fix them or open an issue with the main Baileys library.
-    </p>
+            <p>
+                This library was created to provide developers with a <strong>highly maintained fork of Baileys</strong> that prioritizes speed, stability, and direct developer support. When you encounter bugs, you can report them directly to me, and I'll either fix them immediately or escalate them to the main Baileys repository.
+            </p>
+        </section>
 
-    ---
+        <hr>
 
-    <h2>What is Baileys-z?</h2>
+        <!-- What is Baileys-z Section -->
+        <section class="what-is-section">
+            <h2>🔌 What is Baileys-z?</h2>
 
-    <p>
-        Just like the official Baileys library (<a href="http://baileys.wiki" target="_blank" rel="noopener noreferrer">Baileys 7.0.0rc</a>), it uses **WebSockets** to connect with WhatsApp. It is **lightweight** and very **easy to implement**.
-    </p>
+            <p>
+                Baileys-z is a <strong>lightweight, WebSocket-based library</strong> for connecting to WhatsApp programmatically. Built on the community-maintained <a href="http://baileys.wiki" target="_blank" rel="noopener noreferrer">Baileys v7.0.0rc</a>, it inherits all the core functionality while adding:
+            </p>
 
-    <p>
-        This library is merely a fork of Baileys and includes some **speed improvements** and **minor tweaks**. Even though we depend so much on the official Baileys library for in-library updates, **our fork is aimed to be super fast and easy to use**, and also provides **easy communication** with us if we see an error or you as a user see an error.
-    </p>
+            <ul class="feature-list">
+                <li>⚡ <strong>Performance optimizations</strong> for faster connection handling</li>
+                <li>🛠️ <strong>Minor tweaks</strong> for improved stability</li>
+                <li>💬 <strong>Direct support</strong> from Ernest Tech House</li>
+                <li>📦 <strong>Seamless integration</strong> with Ernest Tech House ecosystem tools</li>
+            </ul>
 
-    <p>
-        Our library uses the latest version of Baileys: **V7.0.0rc**. Right now, that is the most community maintained version. The previous owner, Adjwashing, is no longer in charge of the library; it is now community owned.
-    </p>
+            <div class="info-box">
+                <p><strong>Version Info:</strong> Baileys-z builds directly on <strong>Baileys v7.0.0rc</strong>, currently the most actively maintained version of the library. The original maintainer (Adjwashing) has passed the project to community stewardship.</p>
+            </div>
 
-    ---
+            <h3>Quick Example</h3>
+            <p>Here's how simple it is to get started with Baileys-z:</p>
+            
+            <pre><code>import makeWASocket from 'baileys-z';
 
-    <h2>Documentation Tools & Ecosystem</h2>
+const sock = makeWASocket({
+    printQRInTerminal: true
+});
 
-    <p>
-        So now let's start. In this whole document, we will only use libraries made by Ernest Tech House. That includes: **Baileys-z**, **ernest-logger**, **@peaseernest/system-info**, and many more that will come as days go on and forth.
-    </p>
+sock.ev.on('connection.update', (update) => {
+    console.log('Connection status:', update);
+});</code></pre>
+        </section>
+
+        <hr>
+
+        <!-- Ecosystem Section -->
+        <section class="ecosystem-section">
+            <h2>🧰 Ernest Tech House Ecosystem</h2>
+
+            <p>
+                Throughout this documentation, we exclusively use libraries developed by Ernest Tech House to ensure seamless integration and optimal performance:
+            </p>
+
+            <ul class="tool-list">
+                <li><strong>baileys-z</strong> — The core WhatsApp automation library</li>
+                <li><strong>ernest-logger</strong> — Professional logging utility for debugging</li>
+                <li><strong>@peaseernest/system-info</strong> — System information tracking</li>
+                <li><em>...and more tools coming soon</em></li>
+            </ul>
+
+            <p>
+                This ecosystem approach guarantees that all components work together flawlessly, reducing configuration headaches and integration issues.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Community Section -->
+        <section class="community-section">
+            <h2>🎥 Video Tutorials & Community Contribution</h2>
+
+            <p>
+                We're preparing <strong>comprehensive video tutorials</strong> covering the entire setup process. Initial videos will feature installations on <strong>MX Linux</strong> (my development environment).
+            </p>
+
+            <div class="community-callout">
+                <h3>🤝 We Need Your Help!</h3>
+                <p>
+                    If you use <strong>Windows</strong> or <strong>macOS</strong> and can share a screen recording of your installation process, we'd love to include it in this documentation. Your contribution will help developers on all platforms get started faster.
+                </p>
+                <p>
+                    <strong>Contact me:</strong> Use the WhatsApp link in the footer below to get in touch!
+                </p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Why This Matters -->
+        <section class="why-section">
+            <h2>💡 Why Detailed Documentation Matters</h2>
+
+            <p>
+                The WhatsApp automation community is vibrant and rapidly growing. Developers worldwide are building incredible bots, and the technology's potential is limitless. However, many struggle with:
+            </p>
+
+            <ul>
+                <li>Understanding <em>why</em> code works, not just <em>how</em></li>
+                <li>Debugging connection issues and authentication problems</li>
+                <li>Maintaining stable, production-ready bots</li>
+            </ul>
+
+            <p>
+                This documentation solves those problems by providing deep technical explanations, real-world examples, and battle-tested best practices. You won't just copy-paste code—you'll <strong>understand it</strong>.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>🚀 Ready to Start?</h2>
+            <p>Let's dive into the installation process and get your first Baileys-z bot running!</p>
+            
+            <button class="cta-button">
+                <a href="./pages/instalation.html">Next Page: Installation →</a>
+            </button>
+        </div>
+    </main>
     
-    <p>
-        I know you see very many people flex with WhatsApp bots—yes, it is.
-    </p>
-    
-    ---
-
-    <h2>🎥 Video Tutorials & Community Contribution (Coming Soon)</h2>
-    <p>
-        We are preparing **detailed video tutorials** for the entire setup process. Since I develop on **MX Linux**, the first videos will feature installations and setup on that operating system.
-    </p>
-    <p>
-        **We need your help!** If you use another popular operating system (like **Windows or macOS**) and are willing to share a screen recording of the installation process for clarity and demonstration in our docs, please reach out! You can easily contact me using the WhatsApp link below.
-    </p>
-    
-    ---
-
-    <p>
-        **⚠️ Link Advisory:** Please note that since this documentation is a work-in-progress, some external links (like GitHub) and internal page links **might not be live or might be broken** during initial development. Kindly disregard these until the official launch. The next page is the last section available for today.
-    </p>
-    
-    <button style="padding: 10px 20px; font-size: 1.2em; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        <a href="./pages/instalation.html" style="color: white; text-decoration: none;">Next Page: Installation</a>
-    </button>
-    
-    <footer style="background-color: #333; color: #f0f0f0; padding: 40px 20px; margin-top: 50px;">
-        <div class="footer-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
             <h3 style="color: #daa520; margin-bottom: 15px;">Ernest Tech House</h3>
             <p><strong>Maintained by:</strong> Pease Ernest</p>
             
-            <div class="footer-links" style="margin-top: 15px; text-align: center;">
+            <div class="footer-links">
                 <p><strong>Contact & Resources</strong></p>
                 <p>
-                    <a href="mailto:peaseearnest@example.com" style="color: #daa520; text-decoration: none;">📧 Email</a> |
-                    <a href="https://github.com/peaseernest/baileys-z" target="_blank" style="color: #daa520; text-decoration: none;">💻 GitHub Repository</a> |
-                    <a href="https://wa.me/254793859108" target="_blank" style="color: #daa520; text-decoration: none;">📱 WhatsApp: +254793859108</a>
+                    <a href="mailto:peaseearnest@gmail.com">📧 peaseearnest@gmail.com</a> |
+                    <a href="https://github.com/peaseernest/baileys-z" target="_blank">💻 GitHub Repository</a> |
+                    <a href="https://wa.me/254793859108" target="_blank">📱 WhatsApp: +254793859108</a>
                 </p>
             </div>
             
-            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #8b6914; width: 100%; text-align: center;">
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #8b6914;">
                 <p style="font-size: 0.9em; color: #b8860b;">
                     © 2024 Ernest Tech House | Baileys-z Documentation
                 </p>

@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Baileys-z-Initialization</title>
-        <meta name="description" content="">
+        <title>Baileys-z Initialization Guide | Ernest Tech House</title>
+        <meta name="description" content="Complete guide to initializing and understanding Baileys-z WhatsApp automation">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="../images/social_card.jpeg" type="image/x-icon">
         <link rel="stylesheet" href="../styles/initialize.css">
@@ -16,83 +16,156 @@
         </div>
 
         <main class="content">
-            <h1>Initialization of the Packages We Just Installed</h1>
-            <p>
-                Well, here is the very complicated part as it will define how your bot will work and on what conditions.
-            </p>
+            <h1>🚀 Initialization & Core Concepts</h1>
+
+            <!-- Introduction -->
+            <div class="intro-box">
+                <p>
+                    This section covers the <strong>foundational logic</strong> that powers your WhatsApp bot. We'll explore connection management, authentication persistence, and self-healing reconnection strategies—the core pillars of a stable, production-ready bot.
+                </p>
+            </div>
 
             <hr>
 
-            <h2>Required Setup Check</h2>
-            <p>First, let's ensure that you have the required applications ready to go:</p>
-            <ol>
-                <li>
-                    <strong>VS Code</strong>: Any modern version is acceptable.
-                </li>
-                <li>
-                    <strong>WhatsApp on your phone</strong>: The latest version is highly recommended. This is basically the main tool for authentication.
-                </li>
-            </ol>
+            <!-- Setup Check Section -->
+            <section class="setup-check">
+                <h2>✅ Pre-Flight Checklist</h2>
+                <p>Before we dive into code, ensure you have these essentials ready:</p>
+                
+                <div class="checklist-grid">
+                    <div class="checklist-item">
+                        <h4>💻 VS Code (or your preferred IDE)</h4>
+                        <p>Any modern version works. This is your coding workspace.</p>
+                    </div>
+                    <div class="checklist-item">
+                        <h4>📱 WhatsApp on Your Phone</h4>
+                        <p>Latest version recommended. This is your authentication device.</p>
+                    </div>
+                </div>
+            </section>
 
             <hr>
 
-            <h2>⚠️ Important Precautions Before You Start</h2>
-            <p>Before we start, there are some precautions you should take note of:</p>
-            <ol>
-                <li>
-                    <strong>Unofficial API & Ban Risk:</strong> Baileys-z and Baileys are in no way affiliated with WhatsApp. It is an unofficial way to automate WhatsApp, so if done aggressively, WhatsApp <strong>will ban your account</strong>. This will not be our fault. Not to worry, we will provide guidance in this documentation to prevent this.
-                </li>
-                <li>
-                    <strong>Service Breaks and Updates:</strong> Sometimes WhatsApp might update its website code selectors, internal protocols, or introduce more security features. This might lead to the library crashing or, at terrible times, an auto-logout. This is not our fault. We will immediately update our library, and you just need to update your project dependencies with <code>npm update</code> and reconnect the library.
-                </li>
-                <li>
-                    <strong>Unpredictable Failures:</strong> At times, WhatsApp might just decide to change something that we, as developers, do not know about. For example, the most culprit is the <strong>request paircode function</strong> (we will talk about it soon enough). It might work perfectly at 7:00 AM and fail at 7:05 AM. This is not our fault, and we do not know what causes such immediate failures, but we will provide solutions for handling such errors.
-                </li>
-            </ol>
-            <p>
-                Making a WhatsApp bot is super fun and joyful. Trust me, guys, you will love it and also be proud of yourselves!
-            </p>
+            <!-- Critical Warnings Section -->
+            <section class="warnings-section">
+                <h2>⚠️ Critical Information: Read Before Proceeding</h2>
+                
+                <div class="warning-box">
+                    <h3>🚨 Unofficial API & Account Ban Risk</h3>
+                    <p>
+                        <strong>Baileys-z is not affiliated with WhatsApp.</strong> It's an unofficial automation tool. Aggressive usage (spam, mass messaging, violation of WhatsApp's Terms of Service) <strong>will result in account bans</strong>.
+                    </p>
+                    <p>
+                        <strong>Our Commitment:</strong> Throughout this documentation, we'll teach you best practices to minimize ban risk—including rate limiting, human-like delays, and respectful automation patterns.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>🔄 Service Updates & Breaking Changes</h3>
+                    <p>
+                        WhatsApp regularly updates its protocols, security measures, and internal architecture. These changes can cause:
+                    </p>
+                    <ul>
+                        <li>Temporary library crashes</li>
+                        <li>Unexpected auto-logouts</li>
+                        <li>Connection instability</li>
+                    </ul>
+                    <p>
+                        <strong>What to do:</strong> When this happens, update your dependencies with <code>npm update</code> and restart your bot. Ernest Tech House actively monitors and updates Baileys-z to handle WhatsApp changes.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚡ Unpredictable Failures</h3>
+                    <p>
+                        Some WhatsApp features (like the <strong>pairing code request</strong>) can be inconsistent—working perfectly one moment and failing the next due to server-side changes we can't control or predict.
+                    </p>
+                    <p>
+                        <strong>Solution:</strong> We'll implement robust error handling and fallback strategies to gracefully manage these situations.
+                    </p>
+                </div>
+
+                <div class="encouragement-box">
+                    <p>
+                        <strong>💡 Don't be discouraged!</strong> Building WhatsApp bots is an incredibly rewarding experience. With the right knowledge and responsible practices, you'll create powerful automation tools you'll be proud of. Let's build something amazing together! 🎉
+                    </p>
+                </div>
+            </section>
 
             <hr>
 
-            <h2>Project Folder Structure</h2>
-            <p>
-                Okay, so the first thing to highly consider is the <strong>folder structure</strong>. A clean structure is vital for scaling your bot.
-            </p>
-            
-            <h3>Must-Have Files & Folders:</h3>
-            <ol>
-                <li>
-                    <strong><code>index.js</code></strong>: This will be our main file, the <strong>mother of all code</strong>, responsible for booting the application and managing the core connection state.
-                </li>
-                <li>
-                    <strong><code>logger.js</code></strong>: This will be our logger file that will help us initialize the <strong><code>ernest-logger</code></strong> and export it for use in all our files.
-                </li>
-                <li>
-                    <strong><code>config.js</code></strong>: I call this file your backup environment file, as this file will contain the default environment configs, also exported.
-                </li>
-                <li>
-                    <strong><code>commands/plugin/features</code> folder</strong>: This folder will contain your command files, separating bot logic into modular chunks.
-                </li>
-                <li>
-                    <strong><code>handlers</code> folder</strong>: This folder will contain the main handlers of your bot, like the <strong>message handler</strong> and connection event handling.
-                </li>
-            </ol>
+            <!-- Folder Structure Section -->
+            <section class="structure-section">
+                <h2>📁 Professional Project Structure</h2>
+                
+                <p>
+                    A clean, organized folder structure is <strong>essential for scalability</strong>. As your bot grows, proper organization prevents code chaos and makes maintenance significantly easier.
+                </p>
+
+                <div class="structure-visual">
+                    <h3>🏗️ Recommended File Structure:</h3>
+                    <pre class="folder-tree">my-whatsapp-bot/
+├── index.js                 # Main entry point & connection manager
+├── logger.js               # Ernest-logger configuration
+├── config.js               # Environment & default settings
+├── commands/               # Command modules
+│   ├── admin.js
+│   ├── fun.js
+│   └── utility.js
+├── handlers/               # Event handlers
+│   ├── message.js
+│   └── connection.js
+└── auth_info_baileys/      # Auto-generated auth folder</pre>
+                </div>
+
+                <div class="file-descriptions">
+                    <h3>📄 Core Files Explained:</h3>
+                    
+                    <div class="file-item">
+                        <h4><code>index.js</code></h4>
+                        <p>The <strong>"mother of all code"</strong>—boots your application, manages the connection state, and orchestrates all components.</p>
+                    </div>
+
+                    <div class="file-item">
+                        <h4><code>logger.js</code></h4>
+                        <p>Initializes and exports the <strong>ernest-logger</strong> instance for consistent, centralized logging across all files.</p>
+                    </div>
+
+                    <div class="file-item">
+                        <h4><code>config.js</code></h4>
+                        <p>Your <strong>configuration hub</strong>—stores default settings, environment variables, API keys, and bot prefixes.</p>
+                    </div>
+
+                    <div class="file-item">
+                        <h4><code>commands/</code></h4>
+                        <p>Contains modular command files. Each file handles a specific category (admin, fun, utility), keeping logic organized and maintainable.</p>
+                    </div>
+
+                    <div class="file-item">
+                        <h4><code>handlers/</code></h4>
+                        <p>Event handlers that process incoming messages and connection events. Separates concerns for cleaner code architecture.</p>
+                    </div>
+                </div>
+            </section>
 
             <hr>
 
-            <h2>The Core Connection Code: <code>index.js</code></h2>
-            <p>
-                This section provides the basic template for connecting to WhatsApp, handling the connection state, and saving your authentication session.
-            </p>
+            <!-- Core Connection Code -->
+            <section class="connection-code">
+                <h2>🔌 The Core Connection Code</h2>
+                
+                <p>
+                    This template establishes your WhatsApp connection, handles authentication persistence, and implements self-healing reconnection logic.
+                </p>
 
-            <p>
-                <strong>How to Copy Code:</strong> Below is the code block. You can manually copy the text, or use the "Copy Code" button.
-            </p>
+                <div class="code-header">
+                    <h3>index.js — The Connection Foundation</h3>
+                    <p class="code-note">Click "Copy Code" to grab the entire template:</p>
+                </div>
 
-            <div class="code-container">
-                <button onclick="copyCode('connectionCode')">Copy Code</button>
-                <pre><code id="connectionCode">// index.js - The Main Entry Point
+                <div class="code-container">
+                    <button onclick="copyCode('connectionCode')" class="copy-btn">📋 Copy Code</button>
+                    <pre><code id="connectionCode">// index.js - The Main Entry Point
 
 // 1. Import required functions and constants from Baileys-z
 import makeWASocket, {
@@ -157,158 +230,234 @@ async function startBaileysBot() {
 }
 
 startBaileysBot();</code></pre>
-            </div>
-            
-            <script>
-                function copyCode(elementId) {
-                    const codeElement = document.getElementById(elementId);
-                    const codeText = codeElement.textContent || codeElement.innerText;
+                </div>
+                
+                <script>
+                    function copyCode(elementId) {
+                        const codeElement = document.getElementById(elementId);
+                        const codeText = codeElement.textContent || codeElement.innerText;
+                        
+                        navigator.clipboard.writeText(codeText).then(function() {
+                            alert('✅ Code copied to clipboard!');
+                        }, function(err) {
+                            console.error('Could not copy text: ', err);
+                        });
+                    }
+                </script>
+            </section>
+
+            <hr>
+
+            <!-- Line-by-Line Explanation -->
+            <section class="explanation-section">
+                <h1>🛠️ The Developer's Blueprint: Line-by-Line Analysis</h1>
+                
+                <div class="explanation-intro">
+                    <p>
+                        Let's dissect this code piece by piece. By the end, you'll understand not just <em>how</em> it works, but <em>why</em> each line is critical for a stable, production-ready bot.
+                    </p>
+                </div>
+
+                <!-- Part 1: Imports -->
+                <div class="explanation-block">
+                    <h2>1️⃣ The Imports: Bringing Tools to the Workshop</h2>
                     
-                    navigator.clipboard.writeText(codeText).then(function() {
-                        alert('Code copied to clipboard!');
-                    }, function(err) {
-                        console.error('Could not copy text: ', err);
-                    });
-                }
-            </script>
+                    <div class="code-snippet">
+                        <pre><code>import makeWASocket, { useMultiFileAuthState, fetchLatestBaileysVersion, DisconnectReason } from 'baileys-z';</code></pre>
+                    </div>
 
-            <hr>
+                    <p>This single line imports four essential tools from Baileys-z:</p>
 
-            <h1>Explaining the Developer's Blueprint (Code Line-by-Line) 🛠️</h1>
-            <p>
-                Do not worry about the complexity! We will explain the code line by line, defining its purpose and why it is absolutely necessary for a stable bot.
-            </p>
+                    <div class="import-grid">
+                        <div class="import-item">
+                            <h4><code>makeWASocket</code></h4>
+                            <p>The <strong>primary function</strong> that creates your WhatsApp WebSocket connection (the "socket"). This is your gateway to WhatsApp's servers.</p>
+                        </div>
 
-            <h3>1. The Imports (Bringing Tools to the Workshop)</h3>
-            <pre><code>import makeWASocket, { useMultiFileAuthState, fetchLatestBaileysVersion, DisconnectReason } from 'baileys-z';</code></pre>
-            <p>
-                This line is the entry point. It imports the main functions needed to connect and manage your bot's state from the <strong>Baileys-z</strong> library:
-                <ul>
-                    <li>
-                        <strong><code>makeWASocket</code>:</strong> The <strong>primary function</strong> used to create a new WhatsApp WebSocket connection (the "socket").
-                    </li>
-                    <li>
-                        <strong><code>useMultiFileAuthState</code>:</strong> The utility that helps you save your <strong>login credentials</strong> (session data) to the hard drive, allowing your bot to restart without rescanning the QR code every time.
-                    </li>
-                    <li>
-                        <strong><code>fetchLatestBaileysVersion</code>:</strong> A function to get the <strong>latest stable WhatsApp protocol version</strong>. This ensures your bot connects with the most compatible settings.
-                    </li>
-                    <li>
-                        <strong><code>DisconnectReason</code>:</strong> A list of constants that explains <strong>WHY</strong> the connection closed (e.g., logged out, internet failure, restart required). Essential for smart reconnection logic.
-                    </li>
-                </ul>
-            </p>
+                        <div class="import-item">
+                            <h4><code>useMultiFileAuthState</code></h4>
+                            <p>Manages authentication persistence by saving your <strong>login credentials</strong> to disk. Without this, you'd need to scan the QR code every single time you restart!</p>
+                        </div>
 
-            <pre><code>import { Boom } from '@hapi/boom';</code></pre>
-            <p>
-                <strong><code>Boom</code></strong> is a utility class used by Baileys-z for advanced <strong>HTTP-style error handling</strong>. We use it to check the type of error that caused a disconnection, which is crucial for determining if we should try to reconnect or if the session is permanently logged out.
-            </p>
+                        <div class="import-item">
+                            <h4><code>fetchLatestBaileysVersion</code></h4>
+                            <p>Retrieves the <strong>latest WhatsApp protocol version</strong> to ensure maximum compatibility and reduce connection issues.</p>
+                        </div>
 
-            <pre><code>import logger from './logger.js';</code></pre>
-            <p>
-                This is the import for your custom <strong>Ernest Tech House Logger</strong>. By exporting an instance of the logger from <code>./logger.js</code>, you ensure consistent, centralized, and clear logging across your entire application. This is a <strong>best practice</strong> for clean code and easy debugging!
-            </p>
+                        <div class="import-item">
+                            <h4><code>DisconnectReason</code></h4>
+                            <p>A set of constants explaining <strong>why</strong> a disconnection occurred (logged out, network failure, etc.). Essential for intelligent reconnection logic.</p>
+                        </div>
+                    </div>
 
-            <h3>2. The Connection Core (Setting up the Heartbeat)</h3>
-            <pre><code>async function startBaileysBot() { ... }</code></pre>
-            <p>
-                We wrap our main logic in an `async` function. This is standard practice in Node.js, as most of the connection process involves waiting for network operations (<strong>promises</strong>) to complete.
-            </p>
+                    <div class="code-snippet">
+                        <pre><code>import { Boom } from '@hapi/boom';</code></pre>
+                    </div>
 
-            <pre><code>const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys');</code></pre>
-            <p>
-                This is where the <strong>magic of persistence</strong> happens!
-                <ul>
-                    <li>
-                        It loads the previous session state from the folder named `'auth_info_baileys'`.
-                    </li>
-                    <li>
-                        It returns two things: <strong><code>state</code></strong> (the credentials to use for the current connection attempt) and <strong><code>saveCreds</code></strong> (a function that MUST be called whenever the credentials change).
-                    </li>
-                </ul>
-            </p>
+                    <div class="info-box">
+                        <p>
+                            <strong>Boom</strong> is an HTTP-style error handling utility used internally by Baileys-z. We use it to extract detailed error information from disconnection events, determining whether we should attempt reconnection or accept a permanent logout.
+                        </p>
+                    </div>
 
-            <pre><code>const { version, isLatest } = await fetchLatestBaileysVersion();
+                    <div class="code-snippet">
+                        <pre><code>import logger from './logger.js';</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <p>
+                            Imports your custom <strong>Ernest Tech House Logger</strong> instance. Centralizing your logger ensures consistent, readable logs across your entire application—a professional development best practice!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Part 2: Connection Core -->
+                <div class="explanation-block">
+                    <h2>2️⃣ The Connection Core: Setting Up the Heartbeat</h2>
+
+                    <div class="code-snippet">
+                        <pre><code>async function startBaileysBot() { ... }</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <p>
+                            We use an <code>async</code> function because most connection operations are asynchronous (they involve network requests that take time). The <code>async/await</code> syntax makes this code clean and readable.
+                        </p>
+                    </div>
+
+                    <div class="code-snippet">
+                        <pre><code>const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys');</code></pre>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>🔐 The Magic of Persistence</h4>
+                        <p>This line is <strong>crucial</strong>. It does two things:</p>
+                        <ul>
+                            <li><strong><code>state</code></strong>: Loads existing credentials from the <code>auth_info_baileys</code> folder (auto-created on first run)</li>
+                            <li><strong><code>saveCreds</code></strong>: A function that <em>must</em> be called whenever credentials change to save them to disk</li>
+                        </ul>
+                        <p><strong>Why it matters:</strong> Without this, your bot would forget its login every time it restarts!</p>
+                    </div>
+
+                    <div class="code-snippet">
+                        <pre><code>const { version, isLatest } = await fetchLatestBaileysVersion();
 logger.info(`Using WhatsApp version: ${version.join('.')}, is latest: ${isLatest}`);</code></pre>
-            <p>
-                We fetch the recommended WhatsApp version. We then use our custom `logger` to proudly announce which version of the protocol our bot is running on!
-            </p>
+                    </div>
 
-            <pre><code>const sock = makeWASocket({
+                    <p>Fetches the recommended WhatsApp protocol version and logs it. Using the latest version minimizes compatibility issues.</p>
+
+                    <div class="code-snippet">
+                        <pre><code>const sock = makeWASocket({
     version,
-    logger: logger, 
+    logger: logger,
     auth: state,
-    printQRInTerminal: true, 
-    // ...
+    printQRInTerminal: true,
 });</code></pre>
-            <p>
-                We create the <strong>main connection object (`sock`)</strong>, passing in the crucial configuration:
-                <ul>
-                    <li>
-                        <strong>`version`:</strong> Ensures we use the correct WhatsApp protocol version.
-                    </li>
-                    <li>
-                        <strong>`logger`:</strong> Directs all Baileys-z internal logs to your <strong>`ernest-logger`</strong> instance.
-                    </li>
-                    <li>
-                        <strong>`auth`:</strong> Provides the loaded session <strong>`state`</strong> (credentials) to the socket.
-                    </li>
-                    <li>
-                        <strong>`printQRInTerminal`:</strong> Instructs the library to generate and display the QR code directly in the console for the initial login.
-                    </li>
-                </ul>
-            </p>
+                    </div>
 
-            <h3>3. Event Handlers (Keeping the Bot Alive)</h3>
-            <p>
-                The `sock.ev.on(...)` lines are like the bot's nervous system. They listen for specific events (`ev`) that the WhatsApp connection fires.
-            </p>
+                    <div class="config-explanation">
+                        <h4>🔧 Socket Configuration Breakdown:</h4>
+                        <ul>
+                            <li><strong><code>version</code></strong>: Uses the fetched WhatsApp protocol version</li>
+                            <li><strong><code>logger</code></strong>: Routes all Baileys-z logs to your ernest-logger</li>
+                            <li><strong><code>auth</code></strong>: Provides the loaded credentials</li>
+                            <li><strong><code>printQRInTerminal</code></strong>: Displays QR code in console for initial authentication</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <pre><code>sock.ev.on('creds.update', saveCreds);</code></pre>
-            <p>
-                This is the <strong>most vital line for permanence</strong>! Every time WhatsApp changes the encryption keys or credentials (which happens often), this event fires. We immediately call the <strong>`saveCreds`</strong> function we got earlier, writing the new state to disk. Without this, your bot would log out every few hours!
-            </p>
+                <!-- Part 3: Event Handlers -->
+                <div class="explanation-block">
+                    <h2>3️⃣ Event Handlers: The Bot's Nervous System</h2>
 
-            <pre><code>sock.ev.on('connection.update', (update) => { ... });</code></pre>
-            <p>
-                This is the <strong>heartbeat</strong> of the bot. This event fires whenever the connection status changes (e.g., connecting, open, closed). The logic inside ensures your bot is <strong>self-healing</strong>:
-                <ul>
-                    <li>
-                        <strong>Connection Closed (<code>if (connection === 'close')</code>):</strong> It checks if the disconnection was intentional (like being manually logged out from the phone) or temporary (like an internet dropout).
-                    </li>
-                    <li>
-                        <strong>Reconnection Logic:</strong> If the error is <em>not</em> a permanent `loggedOut` reason, it calls `startBaileysBot()` again, ensuring the bot attempts to reconnect automatically. This is essential for reliability.
-                    </li>
-                    <li>
-                        <strong>Connection Open (<code>else if (connection === 'open')</code>):</strong> The bot is officially ready! The `logger` confirms the successful connection.
-                    </li>
-                    <li>
-                        <strong>QR Code (<code>if (qr)</code>)</strong>: If a new login is needed, the `qr` string is generated, and the user is prompted to scan it.
-                    </li>
-                </ul>
-            </p>
+                    <p>Event handlers are callbacks that fire when specific events occur. Think of them as the bot's reflexes—automatic responses to connection state changes.</p>
 
-            <pre><code>startBaileysBot();</code></pre>
-            <p>
-                This is the final line that calls the main function, putting the entire connection process into action.
-            </p>
+                    <div class="code-snippet">
+                        <pre><code>sock.ev.on('creds.update', saveCreds);</code></pre>
+                    </div>
+
+                    <div class="critical-box">
+                        <h4>🚨 Most Critical Line for Stability</h4>
+                        <p>
+                            Every time WhatsApp rotates encryption keys or updates credentials (which happens frequently), this event fires. We immediately call <code>saveCreds</code> to write the new state to disk.
+                        </p>
+                        <p><strong>Without this line, your bot would log out within hours!</strong></p>
+                    </div>
+
+                    <div class="code-snippet">
+                        <pre><code>sock.ev.on('connection.update', (update) => { ... });</code></pre>
+                    </div>
+
+                    <div class="heartbeat-box">
+                        <h4>💓 The Heartbeat: Self-Healing Reconnection Logic</h4>
+                        <p>This event fires whenever the connection status changes. The logic inside makes your bot <strong>self-healing</strong>:</p>
+                        
+                        <div class="logic-flow">
+                            <div class="logic-item">
+                                <h5>Connection Closed (<code>connection === 'close'</code>)</h5>
+                                <p>Checks if the disconnection was:</p>
+                                <ul>
+                                    <li><strong>Intentional</strong> (manually logged out from phone) → Don't reconnect</li>
+                                    <li><strong>Temporary</strong> (internet dropout, server restart) → Attempt reconnection</li>
+                                </ul>
+                            </div>
+
+                            <div class="logic-item">
+                                <h5>Reconnection Decision</h5>
+                                <p>If the error is NOT <code>DisconnectReason.loggedOut</code>, the bot calls <code>startBaileysBot()</code> again, creating a new connection attempt. This is the <strong>self-healing mechanism</strong>.</p>
+                            </div>
+
+                            <div class="logic-item">
+                                <h5>Connection Open (<code>connection === 'open'</code>)</h5>
+                                <p>Success! The logger confirms the bot is connected and ready to receive messages.</p>
+                            </div>
+
+                            <div class="logic-item">
+                                <h5>QR Code Display (<code>if (qr)</code>)</h5>
+                                <p>If a new authentication is needed, the QR string is generated and the user is prompted to scan it with WhatsApp's "Linked Devices" feature.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <pre><code>startBaileysBot();</code></pre>
+                    </div>
+
+                    <p>The final line that kicks off the entire connection process.</p>
+                </div>
+            </section>
 
             <hr>
 
-            <p>
-                The next step will be to create the supporting files: the <strong><code>logger.js</code></strong> for clean logs and the <strong><code>config.js</code></strong> to manage settings like API keys or default prefixes.
-            </p>
+            <!-- Next Steps -->
+            <section class="next-section">
+                <h2>🎯 What's Next?</h2>
+                
+                <div class="next-box">
+                    <p>
+                        Excellent work! You now understand the core connection logic that powers every Baileys-z bot. Next, we'll create the supporting files:
+                    </p>
+                    <ul>
+                        <li><strong><code>logger.js</code></strong> — Professional logging configuration</li>
+                        <li><strong><code>config.js</code></strong> — Centralized settings management</li>
+                        <li><strong>Message handlers</strong> — Processing incoming WhatsApp messages</li>
+                    </ul>
+                    <p class="coming-soon">📝 <em>These sections are currently being written and will be available soon!</em></p>
+                </div>
+            </section>
 
+            <!-- Navigation -->
             <div class="navigation-buttons">
-                <button>
-                    <a href="./config.html">Next: Setup Logger & Config(coming soon be patient)</a>
+                <button class="nav-btn prev">
+                    <a href="./instalation.html">← Previous: Installation</a>
                 </button>
-                <button>
-                    <a href="./instalation.html">Previous: Installation</a>
+                <button class="nav-btn next">
+                    <a href="./config.html">Next: Logger & Config → <span class="badge">Coming Soon</span></a>
                 </button>
             </div>
         </main>
 
+        <!-- Footer -->
         <footer>
             <div class="footer-content">
                 <h3 style="color: #daa520; margin-bottom: 15px;">Ernest Tech House</h3>
@@ -317,7 +466,7 @@ logger.info(`Using WhatsApp version: ${version.join('.')}, is latest: ${isLatest
                 <div class="footer-links">
                     <p><strong>Contact & Resources</strong></p>
                     <p>
-                        <a href="mailto:peaseearnest@example.com">📧 Email</a> |
+                        <a href="mailto:peaseearnest@gmail.com">📧 peaseearnest@gmail.com</a> |
                         <a href="https://github.com/peaseernest/baileys-z" target="_blank">💻 GitHub Repository</a> |
                         <a href="https://wa.me/254793859108" target="_blank">📱 WhatsApp: +254793859108</a>
                     </p>
@@ -333,7 +482,5 @@ logger.info(`Using WhatsApp version: ${version.join('.')}, is latest: ${isLatest
                 </div>
             </div>
         </footer>
-
-        <script src="" async defer></script>
     </body>
 </html>

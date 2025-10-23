@@ -3,148 +3,322 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Baileys-z-Installation</title>
-        <meta name="description" content="">
+        <title>Baileys-z Installation Guide | Ernest Tech House</title>
+        <meta name="description" content="Complete installation guide for Baileys-z WhatsApp automation library">
         <link rel="shortcut icon" href="../images/social_card.jpeg" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../styles/install.css">
     </head>
     <body>
+        <!-- Header Image -->
         <div class="header-image">
             <img src="../images/social_card.jpeg" alt="Baileys-z Logo">
         </div>
-        <h1>Installation OF Baileys-z</h1>
-        
-        <h2>Before starting: Baileys-z is very modern; it requires some prerequisites to run.</h2>
-        <ol>
-            <li><strong>Node v18+</strong> (Required for the runtime environment)</li>
-            <li><strong>FFmpeg</strong> (Required for handling and converting audio/video files)</li>
-            <li><strong>A Package Manager</strong> (npm, Yarn, or pnpm - used to install Baileys-z)</li>
-            <li><strong>qrcode-terminal</strong> (Recommended npm package for easy authentication)</li>
-        </ol>
-        
-        <h3>Additional Ernest Tech House Packages</h3>
-        <ol>
-            <li><strong>ernest-logger</strong> (for logging bot details)</li>
-            <li>And others will be added as we go on.</li>
-        </ol>
 
-        <h1>Now we shall begin</h1>
+        <main class="content">
+            <h1>📦 Installation Guide</h1>
 
-        <hr>
+            <!-- Quick Summary Box -->
+            <div class="summary-box">
+                <h3>📋 Quick Overview</h3>
+                <ul class="summary-list">
+                    <li><strong>You'll need:</strong> Node.js v18+, FFmpeg, npm/yarn/pnpm, qrcode-terminal</li>
+                    <li><strong>Install time:</strong> ~10-15 minutes</li>
+                    <li><strong>Skill level:</strong> Beginner to Intermediate</li>
+                    <li><strong>Platforms:</strong> Linux, macOS, Windows</li>
+                </ul>
+            </div>
 
-        <h3>Installation of Node.js</h3>
-        <p>
-            To install Node.js, you visit their official <a href="https://nodejs.org/en/downloade" target="_blank" rel="noopener noreferrer">website</a> and make sure you download the **LTS version** as that will be the **Long-Term Support version**.
-        </p>
-        <p>
-            For those that use other operating systems like myself (MX Linux) and any other OS, you will install it using the terminal command:
-        </p>
-        <pre><code>sudo apt install nodejs</code></pre>
-        <p>
-            Well then, after that, you open your terminal and either run `node -v` or `node --version`. An output should present itself of a Node version depending on the year and version you installed.
-        </p>
+            <!-- Prerequisites Section -->
+            <section class="prerequisites-section">
+                <h2>✅ Prerequisites</h2>
+                <p>
+                    Before diving into Baileys-z, ensure your system has these essential tools installed. Don't worry—we'll walk you through each one step-by-step!
+                </p>
 
-        <hr>
+                <div class="prereq-list">
+                    <div class="prereq-item">
+                        <h4>🟢 Node.js v18+</h4>
+                        <p>The JavaScript runtime that powers your bot</p>
+                    </div>
+                    <div class="prereq-item">
+                        <h4>🎥 FFmpeg</h4>
+                        <p>Media processing tool for audio/video files</p>
+                    </div>
+                    <div class="prereq-item">
+                        <h4>📦 Package Manager</h4>
+                        <p>npm, yarn, or pnpm to install dependencies</p>
+                    </div>
+                    <div class="prereq-item">
+                        <h4>📱 qrcode-terminal</h4>
+                        <p>Displays QR codes for WhatsApp authentication</p>
+                    </div>
+                </div>
 
-        <h3>How to install FFmpeg</h3>
-        <p>
-            **FFmpeg** is a crucial command-line tool used by Baileys-z to properly format media (especially audio and video) so that it is sent reliably across all WhatsApp platforms. You must have this installed globally on your machine.
-        </p>
-        
-        <h4>Installation on Linux (Debian/Ubuntu/MX)</h4>
-        <p>
-            Use your system's package manager, which is typically `apt`:
-        </p>
-        <pre><code>sudo apt update</code></pre>
-        <pre><code>sudo apt install ffmpeg</code></pre>
+                <div class="info-box">
+                    <strong>💡 New to Development?</strong> A <strong>terminal</strong> (also called command line or shell) is a text-based interface where you type commands to control your computer. On Windows, it's "Command Prompt" or "PowerShell." On Mac/Linux, it's "Terminal."
+                </div>
+            </section>
 
-        <h4>Installation on macOS</h4>
-        <p>
-            If you have the **Homebrew** package manager installed (highly recommended for macOS development), use the following command:
-        </p>
-        <pre><code>brew install ffmpeg</code></pre>
+            <hr>
 
-        <h4>Installation on Windows</h4>
-        <p>
-            The easiest way is to use the **Chocolatey** package manager (if installed) or follow the official download guide to add FFmpeg to your system's PATH variable.
-        </p>
-        <p>
-            **Using Chocolatey:**
-        </p>
-        <pre><code>choco install ffmpeg</code></pre>
+            <!-- Node.js Installation -->
+            <section class="nodejs-section">
+                <h2>🟢 Step 1: Installing Node.js</h2>
+                
+                <p>
+                    Node.js is the foundation of Baileys-z. We recommend the <strong>LTS (Long-Term Support)</strong> version because it's stable and maintained for security and bug fixes—perfect for production bots.
+                </p>
 
-        <p>
-            **Verification:** To check if FFmpeg is correctly installed, open your terminal and run:
-        </p>
-        <pre><code>ffmpeg -version</code></pre>
-        <p>
-            This should display the current version details.
-        </p>
+                <div class="install-method">
+                    <h3>📥 Windows & macOS</h3>
+                    <ol>
+                        <li>Visit the official <a href="https://nodejs.org/en/download" target="_blank" rel="noopener noreferrer">Node.js download page</a></li>
+                        <li>Download the <strong>LTS version</strong> installer for your operating system</li>
+                        <li>Run the installer and follow the setup wizard</li>
+                        <li>Restart your terminal after installation</li>
+                    </ol>
+                </div>
 
-        <hr>
+                <div class="install-method">
+                    <h3>🐧 Linux (Debian/Ubuntu/MX)</h3>
+                    <p>Open your terminal and run:</p>
+                    <div class="command-box">
+                        <span class="command-label">Install Node.js</span>
+                        <pre><code>sudo apt update && sudo apt install nodejs npm</code></pre>
+                    </div>
+                </div>
 
-        <h2>Development Environment Setup</h2>
+                <div class="verify-box">
+                    <h4>✅ Verify Installation</h4>
+                    <p>Check if Node.js is installed correctly by running:</p>
+                    <pre><code>node -v</code></pre>
+                    <p>You should see output like <code>v18.17.0</code> or higher.</p>
+                </div>
+            </section>
 
-        <h3>Recommended Code Editor (IDE)</h3>
-        <p>
-            While you can use any text editor you like, we strongly recommend using an Integrated Development Environment (IDE) to make development smoother, thanks to features like syntax highlighting, code completion, and integrated terminals.
-        </p>
-        <p>
-            The most popular and recommended IDE for Node.js development is **Visual Studio Code (VS Code)** by Microsoft.
-        </p>
-        <p>
-            To install VS Code:
-            <ol>
-                <li>Visit the official <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer">VS Code download page</a>.</li>
-                <li>Download the installer appropriate for your operating system (Windows, macOS, or Linux).</li>
-                <li>Run the installer and follow the on-screen instructions.</li>
-            </ol>
-        </p>
+            <hr>
 
-        <blockquote>
-            <strong>Future Announcement:</strong> Ernest Tech House is excited to announce that we are currently developing our own dedicated IDE optimized for the **Baileys-z** ecosystem! We aim to release this new development tool by the end of **2026**.
-        </blockquote>
+            <!-- FFmpeg Installation -->
+            <section class="ffmpeg-section">
+                <h2>🎥 Step 2: Installing FFmpeg</h2>
 
-        <hr>
+                <p>
+                    <strong>FFmpeg</strong> is a powerful command-line tool that processes audio and video files. Baileys-z uses it to ensure media sent through WhatsApp is properly formatted and compatible across all devices.
+                </p>
 
-        <h3>Installing Baileys-z and Dependencies</h3>
-        <p>
-            Now that you have the core system dependencies and your preferred IDE installed, we can set up your project and install **Baileys-z** and the supporting **Ernest Tech House** libraries.
-        </p>
+                <div class="info-box">
+                    <strong>🤔 Why FFmpeg?</strong> Without FFmpeg, your bot won't be able to send or process voice notes, videos, or audio files reliably. It's a must-have for media-rich bots.
+                </div>
 
-        <h4>Step 1: Initialize Your Project</h4>
-        <p>
-            Navigate to the directory where you want to create your bot project and initialize a new Node.js project. You can do this easily using the terminal built into VS Code:
-        </p>
-        <pre><code>npm init -y</code></pre>
-        <p>
-            This creates a `package.json` file for tracking your dependencies.
-        </p>
+                <!-- Linux -->
+                <div class="install-method">
+                    <h3>🐧 Linux (Debian/Ubuntu/MX)</h3>
+                    <div class="command-box">
+                        <span class="command-label">Update package list</span>
+                        <pre><code>sudo apt update</code></pre>
+                    </div>
+                    <div class="command-box">
+                        <span class="command-label">Install FFmpeg</span>
+                        <pre><code>sudo apt install ffmpeg</code></pre>
+                    </div>
+                </div>
 
-        <h4>Step 2: Install Baileys-z and Related Packages</h4>
-        <p>
-            We will use **npm** for this example. Replace `npm install` with `yarn add` or `pnpm add` if you prefer a different package manager.
-        </p>
-        <pre><code>npm install baileys-z ernest-logger @peaseernest/system-info qrcode-terminal</code></pre>
+                <!-- macOS -->
+                <div class="install-method">
+                    <h3>🍎 macOS</h3>
+                    <p>If you have <strong>Homebrew</strong> installed (a package manager for macOS):</p>
+                    <div class="command-box">
+                        <span class="command-label">Install FFmpeg via Homebrew</span>
+                        <pre><code>brew install ffmpeg</code></pre>
+                    </div>
+                    <p class="helper-note">
+                        <strong>Don't have Homebrew?</strong> Install it first: <a href="https://brew.sh" target="_blank" rel="noopener noreferrer">brew.sh</a>
+                    </p>
+                </div>
 
-        <p>
-            This command installs:
-            <ul>
-                <li>**`baileys-z`**: The core WhatsApp API library.</li>
-                <li>**`ernest-logger`**: The official logging utility from Ernest Tech House.</li>
-                <li>**`@peaseernest/system-info`**: Another utility for tracking system details.</li>
-                <li>**`qrcode-terminal`**: The recommended package to display the QR code for authentication directly in your terminal.</li>
-            </ul>
-        </p>
-        
-        <p>You are now ready to start writing your first Baileys-z code!</p>
-        <button>
-            <a href="./initialize.html"> Next - Initialization</a>
-        </button>
-        <button>
-            <a href="../index.html"> Previous- Home</a>
-        </button>
+                <!-- Windows -->
+                <div class="install-method">
+                    <h3>🪟 Windows</h3>
+                    
+                    <p><strong>Option 1: Using Chocolatey (Recommended)</strong></p>
+                    <div class="command-box">
+                        <span class="command-label">Install FFmpeg via Chocolatey</span>
+                        <pre><code>choco install ffmpeg</code></pre>
+                    </div>
+                    <p class="helper-note">
+                        <strong>Don't have Chocolatey?</strong> Install it first: <a href="https://chocolatey.org/install" target="_blank" rel="noopener noreferrer">chocolatey.org/install</a>
+                    </p>
+
+                    <p><strong>Option 2: Manual Installation</strong></p>
+                    <ol>
+                        <li>Download FFmpeg from <a href="https://ffmpeg.org/download.html" target="_blank" rel="noopener noreferrer">ffmpeg.org</a></li>
+                        <li>Extract the downloaded ZIP file to <code>C:\ffmpeg</code></li>
+                        <li>Add FFmpeg to your system PATH:
+                            <ul>
+                                <li>Search for "Environment Variables" in Windows Settings</li>
+                                <li>Click "Edit the system environment variables"</li>
+                                <li>Click "Environment Variables" button</li>
+                                <li>Under "System variables", find and select "Path"</li>
+                                <li>Click "Edit" → "New" → Add <code>C:\ffmpeg\bin</code></li>
+                                <li>Click "OK" on all dialogs</li>
+                                <li>Restart your terminal</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="verify-box">
+                    <h4>✅ Verify Installation</h4>
+                    <p>Confirm FFmpeg is installed by running:</p>
+                    <pre><code>ffmpeg -version</code></pre>
+                    <p>You should see version information displayed.</p>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- IDE Setup -->
+            <section class="ide-section">
+                <h2>💻 Step 3: Code Editor Setup</h2>
+
+                <p>
+                    While you <em>can</em> use any text editor, we strongly recommend an <strong>IDE (Integrated Development Environment)</strong> for the best development experience.
+                </p>
+
+                <div class="info-box">
+                    <strong>🤔 IDE vs. Text Editor:</strong> A basic text editor (like Notepad) just edits text. An IDE like VS Code includes built-in features like syntax highlighting, autocomplete, debugging tools, and integrated terminals—making coding much easier!
+                </div>
+
+                <div class="ide-recommendation">
+                    <h3>🌟 Recommended: Visual Studio Code</h3>
+                    <p>VS Code is free, powerful, and the most popular choice for Node.js development.</p>
+                    
+                    <ol>
+                        <li>Visit the <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer">VS Code download page</a></li>
+                        <li>Download the installer for your OS (Windows, macOS, or Linux)</li>
+                        <li>Run the installer and follow the prompts</li>
+                        <li>Launch VS Code and you're ready to code!</li>
+                    </ol>
+                </div>
+
+                <blockquote class="future-note">
+                    <strong>🚀 Coming Soon:</strong> Ernest Tech House is developing a custom IDE optimized specifically for the Baileys-z ecosystem. Expected release: End of 2026.
+                </blockquote>
+            </section>
+
+            <hr>
+
+            <!-- Project Setup -->
+            <section class="project-section">
+                <h2>🏗️ Step 4: Project Setup & Installation</h2>
+
+                <p>
+                    Now that your system is ready, let's create your Baileys-z project and install all necessary packages!
+                </p>
+
+                <h3>📁 Create Your Project</h3>
+                <ol>
+                    <li>Open your terminal (or VS Code's integrated terminal)</li>
+                    <li>Navigate to where you want to create your project:
+                        <pre><code>cd ~/Documents  # or any folder you prefer</code></pre>
+                    </li>
+                    <li>Create a new folder for your bot:
+                        <pre><code>mkdir my-whatsapp-bot && cd my-whatsapp-bot</code></pre>
+                    </li>
+                    <li>Initialize a new Node.js project:
+                        <div class="command-box">
+                            <span class="command-label">Initialize project</span>
+                            <pre><code>npm init -y</code></pre>
+                        </div>
+                        <p class="helper-note">This creates a <code>package.json</code> file to track your project dependencies.</p>
+                    </li>
+                </ol>
+
+                <h3>📦 Install Baileys-z & Dependencies</h3>
+                <p>Run the following command to install everything you need:</p>
+                
+                <div class="command-box install-command">
+                    <span class="command-label">Install all packages</span>
+                    <pre><code>npm install baileys-z ernest-logger @peaseernest/system-info qrcode-terminal</code></pre>
+                </div>
+
+                <div class="package-info">
+                    <h4>📚 What Gets Installed:</h4>
+                    <ul>
+                        <li><code>baileys-z</code> — The core WhatsApp automation library</li>
+                        <li><code>ernest-logger</code> — Professional logging utility from Ernest Tech House</li>
+                        <li><code>@peaseernest/system-info</code> — System information tracking utility</li>
+                        <li><code>qrcode-terminal</code> — QR code display for WhatsApp authentication</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>📝 Alternative Package Managers:</strong>
+                    <ul>
+                        <li><strong>Yarn:</strong> <code>yarn add baileys-z ernest-logger @peaseernest/system-info qrcode-terminal</code></li>
+                        <li><strong>pnpm:</strong> <code>pnpm add baileys-z ernest-logger @peaseernest/system-info qrcode-terminal</code></li>
+                    </ul>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Quick Test -->
+            <section class="test-section">
+                <h2>🧪 Quick Test: Verify Everything Works</h2>
+                
+                <p>Let's confirm your installation is successful with a simple test:</p>
+
+                <ol>
+                    <li>Create a file called <code>test.js</code> in your project folder</li>
+                    <li>Add this code:</li>
+                </ol>
+
+                <div class="code-container">
+                    <pre><code>// test.js - Quick installation verification
+import makeWASocket from 'baileys-z';
+import logger from 'ernest-logger';
+
+console.log('✅ Baileys-z loaded successfully!');
+console.log('✅ Ernest Logger loaded successfully!');
+console.log('🎉 Your environment is ready!');</code></pre>
+                </div>
+
+                <ol start="3">
+                    <li>Add this to your <code>package.json</code> if not already present:
+                        <pre><code>"type": "module"</code></pre>
+                    </li>
+                    <li>Run the test:
+                        <pre><code>node test.js</code></pre>
+                    </li>
+                </ol>
+
+                <p>If you see the success messages, you're all set! 🎉</p>
+            </section>
+
+            <hr>
+
+            <!-- Next Steps -->
+            <div class="next-steps">
+                <h2>🚀 What's Next?</h2>
+                <p>
+                    Excellent work! Your development environment is fully configured. Now let's move on to <strong>initializing your first Baileys-z connection</strong> and understanding how it all works under the hood.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="navigation-buttons">
+                <button>
+                    <a href="./initialize.html">Next: Initialization →</a>
+                </button>
+                <button>
+                    <a href="../index.html">← Previous: Home</a>
+                </button>
+            </div>
+        </main>
+
+        <!-- Footer -->
         <footer>
             <div class="footer-content">
                 <h3 style="color: #daa520; margin-bottom: 15px;">Ernest Tech House</h3>
@@ -153,7 +327,7 @@
                 <div class="footer-links">
                     <p><strong>Contact & Resources</strong></p>
                     <p>
-                        <a href="mailto:peaseearnest@example.com">📧 Email</a> |
+                        <a href="mailto:peaseearnest@gmail.com">📧 peaseearnest@gmail.com</a> |
                         <a href="https://github.com/peaseernest/baileys-z" target="_blank">💻 GitHub Repository</a> |
                         <a href="https://wa.me/254793859108" target="_blank">📱 WhatsApp: +254793859108</a>
                     </p>
@@ -169,7 +343,5 @@
                 </div>
             </div>
         </footer>
-        
-        <script src="" async defer></script>
     </body>
 </html>
