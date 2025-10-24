@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Baileys-z Logger Guide | Ernest Tech House</title>
+        <meta name="description" content="Complete guide to implementing professional logging with Ernest-logger for WhatsApp automation">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="../images/social_card.jpeg" type="image/x-icon">
+        <link rel="stylesheet" href="../styles/initialize.css">
+    </head>
+    <body>
+        <!-- Header Image -->
+        <div class="header-image">
+            <img src="../images/social_card.jpeg" alt="Baileys-z Logo">
+        </div>
+
+        <main class="content">
+            <h1>📝 Professional Logging with Ernest-logger</h1>
+
+            <!-- Introduction -->
+            <div class="intro-box">
+                <p>
+                    Logging is the <strong>diagnostic heartbeat</strong> of your WhatsApp bot. In this section, we'll implement a professional logging system that gives you crystal-clear visibility into what your bot is doing—when things work perfectly AND when they inevitably fail.
+                </p>
+            </div>
+
+            <hr>
+
+            <!-- Why Logging Matters -->
+            <section class="importance-section">
+                <h2>🔍 Why Professional Logging Matters</h2>
+                
+                <div class="importance-grid">
+                    <div class="importance-item">
+                        <h4>🩺 Debugging & Diagnostics</h4>
+                        <p>When your bot misbehaves (and it will), detailed logs are your first line of defense. They help you pinpoint exactly where and why things went wrong.</p>
+                    </div>
+                    
+                    <div class="importance-item">
+                        <h4>📊 Performance Monitoring</h4>
+                        <p>Track response times, message throughput, and connection stability to identify bottlenecks before they become problems.</p>
+                    </div>
+                    
+                    <div class="importance-item">
+                        <h4>🔒 Security & Audit Trail</h4>
+                        <p>Know who's using your bot, what commands they're running, and detect suspicious activity patterns.</p>
+                    </div>
+                    
+                    <div class="importance-item">
+                        <h4>🚀 Production Readiness</h4>
+                        <p>Professional applications need professional logging. This separates hobby projects from production-ready systems.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Logger Code Section -->
+            <section class="logger-code">
+                <h2>🔧 The Logger Implementation</h2>
+                
+                <p>
+                    This template creates a centralized logging system using <strong>ernest-logger</strong>—our optimized logging solution that provides beautiful, informative console output.
+                </p>
+
+                <div class="code-header">
+                    <h3>logger.js — Your Diagnostic Dashboard</h3>
+                    <p class="code-note">Click "Copy Code" to grab the complete logger template:</p>
+                </div>
+
+                <div class="code-container">
+                    <button onclick="copyCode('loggerCode')" class="copy-btn">📋 Copy Code</button>
+                    <pre><code id="loggerCode">// logger.js - Professional Logging Configuration
+
+// Import the ernest-logger library
+import { createLogger } from 'ernest-logger';
+
+// Create and configure the main logger instance
+const logger = createLogger({
+    // Display log level in output (error, warn, info, debug)
+    level: 'info',
+    
+    // Enable colorful output for better readability
+    colors: true,
+    
+    // Show timestamps in logs
+    timestamp: true,
+    
+    // Custom format for log messages
+    format: '{timestamp} {level} {message}',
+    
+    // Optional: Add custom levels or colors
+    customLevels: {
+        success: { color: 'green', priority: 2 }
+    }
+});
+
+// Export the logger for use in other files
+export default logger;</code></pre>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Line-by-Line Explanation -->
+            <section class="explanation-section">
+                <h1>🛠️ Understanding Your Logger: Line-by-Line Analysis</h1>
+                
+                <div class="explanation-intro">
+                    <p>
+                        Let's break down this logger configuration piece by piece. You'll understand exactly how to customize it for your needs and why each option matters.
+                    </p>
+                </div>
+
+                <!-- Part 1: Import -->
+                <div class="explanation-block">
+                    <h2>1️⃣ The Import: Bringing in the Logging Engine</h2>
+                    
+                    <div class="code-snippet">
+                        <pre><code>import { createLogger } from 'ernest-logger';</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <p>
+                            This imports the <code>createLogger</code> function from our <strong>ernest-logger</strong> package. Think of this as "unboxing" your logging toolkit—you now have access to all the professional logging features we've built.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Part 2: Logger Configuration -->
+                <div class="explanation-block">
+                    <h2>2️⃣ Logger Configuration: Setting Up Your Dashboard</h2>
+
+                    <div class="code-snippet">
+                        <pre><code>const logger = createLogger({ ... });</code></pre>
+                    </div>
+
+                    <p>This creates your logger instance with customized settings. Let's examine each configuration option:</p>
+
+                    <div class="config-explanation">
+                        <h4>🎛️ Configuration Options Explained:</h4>
+                        
+                        <div class="config-item">
+                            <h5><code>level: 'info'</code></h5>
+                            <p><strong>The "Volume Control" for Your Logs</strong></p>
+                            <p>This setting determines how "chatty" your logger will be. Available levels (from quietest to loudest):</p>
+                            <ul>
+                                <li><strong><code>error</code></strong>: Only show critical errors</li>
+                                <li><strong><code>warn</code></strong>: Errors + warnings</li>
+                                <li><strong><code>info</code></strong>: Errors, warnings + general information (recommended for production)</li>
+                                <li><strong><code>debug</code></strong>: Everything including detailed debugging info</li>
+                            </ul>
+                            <p><strong>Pro Tip:</strong> Use <code>debug</code> during development, then switch to <code>info</code> for production.</p>
+                        </div>
+
+                        <div class="config-item">
+                            <h5><code>colors: true</code></h5>
+                            <p><strong>Visual Hierarchy at a Glance</strong></p>
+                            <p>When enabled, different log levels appear in different colors:</p>
+                            <ul>
+                                <li>🔴 <strong>Errors</strong> in red - Immediate attention needed</li>
+                                <li>🟡 <strong>Warnings</strong> in yellow - Potential issues</li>
+                                <li>🟢 <strong>Info</strong> in green - Normal operations</li>
+                                <li>🔵 <strong>Debug</strong> in blue - Detailed technical info</li>
+                            </ul>
+                            <p>This makes scanning logs incredibly efficient—your eyes instantly know what's important.</p>
+                        </div>
+
+                        <div class="config-item">
+                            <h5><code>timestamp: true</code></h5>
+                            <p><strong>Your Investigation Timeline</strong></p>
+                            <p>Adds exact timestamps to every log entry. Essential for:</p>
+                            <ul>
+                                <li>Tracking when errors occurred</li>
+                                <li>Calculating performance metrics</li>
+                                <li>Correlating logs with user reports</li>
+                                <li>Debugging time-sensitive issues</li>
+                            </ul>
+                            <p>Without timestamps, you're debugging in the dark!</p>
+                        </div>
+
+                        <div class="config-item">
+                            <h5><code>format: '{timestamp} {level} {message}'</code></h5>
+                            <p><strong>Consistent Log Structure</strong></p>
+                            <p>Defines the pattern for all log messages. This creates predictable, machine-readable output:</p>
+                            <pre class="log-example">2024-01-15T14:30:25.123Z INFO Connection established successfully!
+2024-01-15T14:31:10.456Z ERROR Connection closed. Reason: Network failure</pre>
+                            <p>You can customize this format to include additional context like file names, user IDs, or request IDs.</p>
+                        </div>
+
+                        <div class="config-item">
+                            <h5><code>customLevels</code></h5>
+                            <p><strong>Extending Your Vocabulary</strong></p>
+                            <p>Add your own log levels for specific use cases. In our example:</p>
+                            <pre><code>customLevels: {
+    success: { color: 'green', priority: 2 }
+}</code></pre>
+                            <p>This lets you use <code>logger.success('User registered!')</code> for positive outcomes that aren't just informational.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 3: Export -->
+                <div class="explanation-block">
+                    <h2>3️⃣ The Export: Sharing Your Logger</h2>
+
+                    <div class="code-snippet">
+                        <pre><code>export default logger;</code></pre>
+                    </div>
+
+                    <div class="critical-box">
+                        <h4>🚨 Centralized Logging: A Professional Practice</h4>
+                        <p>
+                            By exporting a single logger instance, you ensure <strong>consistent logging behavior</strong> across your entire application. Every file imports the same configured logger, which means:
+                        </p>
+                        <ul>
+                            <li>Uniform log format throughout your codebase</li>
+                            <li>Centralized control over log levels</li>
+                            <li>Easier maintenance and configuration changes</li>
+                            <li>No "logger configuration drift" between files</li>
+                        </ul>
+                        <p><strong>Alternative (don't do this):</strong> Creating separate logger instances in each file leads to inconsistent output and configuration nightmares.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Comparison Section -->
+            <section class="comparison-section">
+                <h2>⚖️ The Great Comparison: Ernest-logger vs Console.log</h2>
+                
+                <div class="comparison-intro">
+                    <p>You might be wondering: <em>"Why not just use console.log? It's built into JavaScript!"</em> Let's examine why professional logging wins every time.</p>
+                </div>
+
+                <div class="comparison-table">
+                    <div class="comparison-header">
+                        <div class="comparison-col">
+                            <h3>🤔 Using console.log (The Amateur Way)</h3>
+                        </div>
+                        <div class="comparison-col">
+                            <h3>🚀 Using Ernest-logger (The Professional Way)</h3>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comparison-col">
+                            <h4>❌ Unstructured Chaos</h4>
+                            <pre class="bad-example">console.log('Message received');
+console.log('Error happened');
+console.log('User data:', user);</pre>
+                            <p><strong>Result:</strong> A messy mix of everything. No levels, no timestamps, no consistency.</p>
+                        </div>
+                        <div class="comparison-col">
+                            <h4>✅ Structured Clarity</h4>
+                            <pre class="good-example">logger.info('Message received');
+logger.error('Error happened');
+logger.debug('User data:', { user });</pre>
+                            <p><strong>Result:</strong> Organized, searchable, and filterable logs with clear intent.</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comparison-col">
+                            <h4>❌ No Log Level Control</h4>
+                            <p>All messages appear all the time. In production, you're either:</p>
+                            <ul>
+                                <li>Drowning in debug noise, OR</li>
+                                <li>Missing critical information because you removed console.logs</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-col">
+                            <h4>✅ Intelligent Filtering</h4>
+                            <p>Change one setting to control visibility:</p>
+                            <pre><code>// Development - see everything
+level: 'debug'
+
+// Production - only important info
+level: 'info'</code></pre>
+                            <p>Your code stays the same—just adjust the configuration!</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comparison-col">
+                            <h4>❌ Debugging Nightmares</h4>
+                            <p>When something breaks at 3 AM:</p>
+                            <ul>
+                                <li>"When did this error occur?" ❌ No timestamp</li>
+                                <li>"Is this a new error or old?" ❌ Can't tell</li>
+                                <li>"What was happening before the crash?" ❌ No context</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-col">
+                            <h4>✅ Forensic Debugging</h4>
+                            <p>Every log tells a complete story:</p>
+                            <pre class="log-example">2024-01-15T03:14:22.123Z INFO Processing user payment
+2024-01-15T03:14:23.456Z DEBUG Payment details: {amount: 100, currency: 'USD'}
+2024-01-15T03:14:24.789Z ERROR Payment failed: Insufficient funds
+2024-01-15T03:14:25.012Z WARN Retrying payment with backup method</pre>
+                            <p>You know exactly what happened and when.</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comparison-col">
+                            <h4>❌ Performance Blindness</h4>
+                            <p>No easy way to track:</p>
+                            <ul>
+                                <li>How long operations take</li>
+                                <li>Bottlenecks in your code</li>
+                                <li>Memory usage patterns</li>
+                            </ul>
+                            <p>You're flying blind on performance issues.</p>
+                        </div>
+                        <div class="comparison-col">
+                            <h4>✅ Performance Insights</h4>
+                            <p>Easy performance tracking:</p>
+                            <pre><code>const start = Date.now();
+// ... some operation ...
+logger.debug(`Operation completed in ${Date.now() - start}ms`);</code></pre>
+                            <p>Spot slow operations before users complain.</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comparison-col">
+                            <h4>❌ Production Problems</h4>
+                            <p>In production environments:</p>
+                            <ul>
+                                <li>Logs might not be captured properly</li>
+                                <li>No integration with monitoring tools</li>
+                                <li>Difficult to ship logs to external systems</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-col">
+                            <h4>✅ Production Ready</h4>
+                            <p>Professional logging features:</p>
+                            <ul>
+                                <li>Easy integration with log aggregators</li>
+                                <li>Structured JSON output options</li>
+                                <li>File logging capabilities</li>
+                                <li>Remote logging support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-conclusion">
+                    <div class="verdict-box">
+                        <h3>🏆 The Verdict</h3>
+                        <p>
+                            <strong>console.log is for quick experiments.</strong> <br>
+                            <strong>Ernest-logger is for production applications.</strong>
+                        </p>
+                        <p>
+                            The few minutes you spend setting up proper logging will save you hours of debugging frustration down the road. It's one of the highest-return investments you can make in your code quality.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Questions Section -->
+            <section class="questions-section">
+                <h2>❓ Frequently Asked Questions</h2>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h4>🤔 "Do I really need a separate logger? My bot is simple."</h4>
+                        <div class="faq-answer">
+                            <p><strong>Yes, and here's why:</strong></p>
+                            <ul>
+                                <li><strong>Simple bots become complex</strong> - What starts as 100 lines of code grows to 1,000+ lines faster than you think</li>
+                                <li><strong>Debugging time compounds</strong> - Every minute saved by good logs multiplies over your project's lifetime</li>
+                                <li><strong>It's not about complexity</strong> - It's about having the right tools when you need them most (during emergencies)</li>
+                                <li><strong>Professional habit</strong> - Building good practices early makes you a better developer</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>🔄 "Can I switch from console.log to ernest-logger later?"</h4>
+                        <div class="faq-answer">
+                            <p><strong>Yes, but it's painful.</strong> Here's what migration looks like:</p>
+                            <ul>
+                                <li>Find and replace hundreds of console.log statements</li>
+                                <li>Manually determine appropriate log levels for each</li>
+                                <li>Risk breaking working code during replacement</li>
+                                <li>Lose historical context in existing logs</li>
+                            </ul>
+                            <p><strong>Better approach:</strong> Start with professional logging from day one. The setup takes 5 minutes and pays dividends immediately.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>⚡ "Won't logging slow down my bot?"</h4>
+                        <div class="faq-answer">
+                            <p><strong>Minimal impact, massive benefits.</strong></p>
+                            <ul>
+                                <li>Modern logging libraries are highly optimized</li>
+                                <li>You can disable debug logs in production for maximum performance</li>
+                                <li>The performance cost is negligible compared to:</li>
+                                <ul>
+                                    <li>Network latency to WhatsApp servers</li>
+                                    <li>Message processing logic</li>
+                                    <li>Database operations</li>
+                                </ul>
+                                <li><strong>Trade-off:</strong> 1% potential performance impact vs. 90% reduction in debugging time</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>🎨 "The colors look nice, but are they practical?"</h4>
+                        <div class="faq-answer">
+                            <p><strong>Absolutely! Colors provide instant visual cues:</strong></p>
+                            <ul>
+                                <li><span style="color: red;">🔴 Red errors</span> - Stop what you're doing and fix this</li>
+                                <li><span style="color: orange;">🟡 Yellow warnings</span> - Potential issues to investigate</li>
+                                <li><span style="color: green;">🟢 Green info</span> - Normal operation, scan quickly</li>
+                                <li><span style="color: blue;">🔵 Blue debug</span> - Detailed info for deep diving</li>
+                            </ul>
+                            <p>Your brain processes color faster than text. In a crisis, this speed matters.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>📁 "Where are my logs stored? How do I view them later?"</h4>
+                        <div class="faq-answer">
+                            <p><strong>By default, logs go to the console.</strong> But ernest-logger can do much more:</p>
+                            <ul>
+                                <li><strong>File logging:</strong> Save logs to files for long-term storage</li>
+                                <li><strong>Remote logging:</strong> Send logs to external services</li>
+                                <li><strong>Log rotation:</strong> Automatically manage log file sizes</li>
+                                <li><strong>Multiple destinations:</strong> Console + file + remote simultaneously</li>
+                            </ul>
+                            <p>We'll cover advanced logging configurations in the production deployment section.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>🚀 "I'm convinced! What's the fastest way to get started?"</h4>
+                        <div class="faq-answer">
+                            <p><strong>Three simple steps:</strong></p>
+                            <ol>
+                                <li>Copy the logger.js code from this page</li>
+                                <li>Create a <code>logger.js</code> file in your project</li>
+                                <li>Import and use it in your <code>index.js</code>:</li>
+                            </ol>
+                            <pre><code>import logger from './logger.js';
+
+// Replace all console.log with appropriate levels
+logger.info('Bot starting up...');
+logger.error('Something went wrong:', error);</code></pre>
+                            <p>That's it! You're now logging like a professional. 🎉</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Practical Usage Examples -->
+            <section class="usage-section">
+                <h2>💡 Putting Your Logger to Work</h2>
+                
+                <p>Now let's see how to actually use your logger in real scenarios:</p>
+
+                <div class="usage-examples">
+                    <h3>📋 Common Logging Patterns</h3>
+
+                    <div class="example-item">
+                        <h4>Basic Usage in index.js</h4>
+                        <pre><code>// Import your centralized logger
+import logger from './logger.js';
+
+// Different log levels for different situations
+logger.info('Bot starting up...');
+logger.debug('Connection details:', { version, isLatest });
+logger.warn('Slow response detected');
+logger.error('Failed to send message:', error);
+logger.success('User payment processed!'); // Custom level</code></pre>
+                    </div>
+
+                    <div class="example-item">
+                        <h4>Structured Logging with Context</h4>
+                        <pre><code>// Instead of this:
+logger.info(`Message from ${sender}: ${message}`);
+
+// Do this for better parsing:
+logger.info('Incoming message', { 
+    sender: sender, 
+    message: message,
+    timestamp: new Date().toISOString(),
+    chatType: isGroup ? 'group' : 'private'
+});</code></pre>
+                        <p><strong>Why?</strong> Structured logs are easier to search, filter, and analyze programmatically.</p>
+                    </div>
+
+                    <div class="example-item">
+                        <h4>Error Logging Best Practices</h4>
+                        <pre><code>try {
+    // Some risky operation
+    await sendMessage(userId, content);
+} catch (error) {
+    // ❌ Don't do this:
+    logger.error('Failed to send message');
+    
+    // ✅ Do this instead:
+    logger.error('Failed to send message', {
+        userId: userId,
+        messageContent: content,
+        error: error.message,
+        stack: error.stack // For debugging
+    });
+}</code></pre>
+                        <p>Always include the actual error object and relevant context.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Your Current Project State -->
+            <section class="project-state">
+                <h2>📁 Your Project So Far</h2>
+                
+                <div class="state-visual">
+                    <h3>🏗️ Current File Structure:</h3>
+                    <pre class="folder-tree">my-whatsapp-bot/
+├── index.js                 # ✅ COMPLETE - Connection manager
+├── logger.js               # ✅ COMPLETE - Logging configuration
+├── commands/               # 🚧 COMING SOON
+│   ├── admin.js
+│   └── utility.js
+├── handlers/               # 🚧 COMING SOON  
+│   └── message.js
+└── auth_info_baileys/      # ⚡ Auto-generated on first run</pre>
+                </div>
+
+                <div class="achievement-box">
+                    <h4>🎉 What You've Accomplished</h4>
+                    <p>With just these two files, you now have:</p>
+                    <ul>
+                        <li>✅ A <strong>self-healing WhatsApp connection</strong> that survives disconnections</li>
+                        <li>✅ <strong>Persistent authentication</strong> (no repeated QR scanning)</li>
+                        <li>✅ <strong>Professional logging</strong> with colors, timestamps, and multiple levels</li>
+                        <li>✅ A <strong>solid foundation</strong> for building complex bot features</li>
+                    </ul>
+                    <p><strong>Next up:</strong> We'll add message handling and your first commands!</p>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Next Steps -->
+            <section class="next-section">
+                <h2>🎯 What's Next?</h2>
+                
+                <div class="next-box">
+                    <p>
+                        Excellent! You now have a robust logging system that will save you countless hours of debugging. Next, we'll create:
+                    </p>
+                    <ul>
+                        <li><strong><code>handlers/message.js</code></strong> — Process incoming WhatsApp messages</li>
+                        <li><strong><code>commands/</code></strong> — Modular command system for different functionalities</li>
+                        <li><strong><code>config.js</code></strong> — Centralized configuration management</li>
+                    </ul>
+                    <p class="coming-soon">📝 <em>These sections are currently being written and will be available soon!</em></p>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="navigation-buttons">
+                <button class="nav-btn prev">
+                    <a href="./initialize.html">← Previous: Initialization</a>
+                </button>
+                <button class="nav-btn next">
+                    <a href="./config.html">Next:Configuration → <span class="badge">Available</span></a>
+                </button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <h3 style="color: #daa520; margin-bottom: 15px;">Ernest Tech House</h3>
+                <p><strong>Maintained by:</strong> Pease Ernest</p>
+                
+                <div class="footer-links">
+                    <p><strong>Contact & Resources</strong></p>
+                    <p>
+                        <a href="mailto:peaseearnest@gmail.com">📧 peaseearnest@gmail.com</a> |
+                        <a href="https://github.com/peaseernest/baileys-z" target="_blank">💻 GitHub Repository</a> |
+                        <a href="https://wa.me/254793859108" target="_blank">📱 WhatsApp: +254793859108</a>
+                    </p>
+                </div>
+                
+                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #8b6914;">
+                    <p style="font-size: 0.9em; color: #b8860b;">
+                        © 2024 Ernest Tech House | Baileys-z Documentation
+                    </p>
+                    <p style="font-size: 0.85em; color: #8b6914; margin-top: 5px;">
+                        This is an unofficial WhatsApp automation library. Use responsibly.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            function copyCode(elementId) {
+                const codeElement = document.getElementById(elementId);
+                const codeText = codeElement.textContent || codeElement.innerText;
+                
+                navigator.clipboard.writeText(codeText).then(function() {
+                    alert('✅ Code copied to clipboard!');
+                }, function(err) {
+                    console.error('Could not copy text: ', err);
+                });
+            }
+
+            // FAQ toggle functionality
+            document.querySelectorAll('.faq-item h4').forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        </script>
+    </body>
+</html>
