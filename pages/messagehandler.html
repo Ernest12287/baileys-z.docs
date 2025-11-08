@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Handler - Baileys-z Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 3px solid #daa520;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #daa520;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        h2 {
+            color: #ffd700;
+            font-size: 2em;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8b6914;
+        }
+
+        h3 {
+            color: #daa520;
+            font-size: 1.5em;
+            margin: 20px 0 15px 0;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border: 3px solid #daa520;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .code-section {
+            background-color: #1a1a1a;
+            border: 2px solid #8b6914;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #8b6914 0%, #daa520 100%);
+            color: #0a0a0a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .copy-btn:hover {
+            background: linear-gradient(135deg, #daa520 0%, #ffd700 100%);
+            transform: translateY(-2px);
+        }
+
+        pre {
+            background-color: #0d0d0d;
+            border-radius: 5px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-top: 50px;
+        }
+
+        code {
+            color: #ffd700;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .explanation {
+            background-color: #0f0f0f;
+            border-left: 5px solid #daa520;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning {
+            background-color: #2d1a1a;
+            border-left: 5px solid #ff6b6b;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .success {
+            background-color: #1a2d1a;
+            border-left: 5px solid #4caf50;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border: 2px solid #8b6914;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .feature-item h4 {
+            color: #daa520;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border-top: 3px solid #8b6914;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #daa520;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #ffd700;
+        }
+
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border: 2px solid #8b6914;
+            color: #daa520;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: linear-gradient(135deg, #8b6914 0%, #daa520 100%);
+            color: #0a0a0a;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💬 Complete Message Handler System</h1>
+            <p style="color: #b8860b; margin-top: 10px;">Process Messages, Route Commands, Handle Media</p>
+        </div>
+
+        <div class="intro-box">
+            <h3>📖 What This Handler Does</h3>
+            <ul>
+                <li>✅ Processes all incoming WhatsApp messages</li>
+                <li>✅ Extracts sender info, message content, and media</li>
+                <li>✅ Routes commands to appropriate handlers</li>
+                <li>✅ Implements rate limiting and security checks</li>
+                <li>✅ Handles text, images, videos, audio, documents</li>
+                <li>✅ Supports group and private chat contexts</li>
+            </ul>
+        </div>
+
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="showTab('main')">Main Handler</button>
+            <button class="tab-btn" onclick="showTab('group')">Group Handler</button>
+            <button class="tab-btn" onclick="showTab('connection')">Connection Handler</button>
+            <button class="tab-btn" onclick="showTab('commands')">Command System</button>
+        </div>
+
+        <div id="main" class="tab-content active">
+            <h2>📝 handlers/message.js - The Main Message Processor</h2>
+            
+            <div class="code-section">
+                <button class="copy-btn" onclick="copyCode('messageCode')">📋 Copy Code</button>
+                <pre><code id="messageCode">// handlers/message.js - Complete Message Processing System
+
+import logger from '../logger.js';
+import config from '../config.js';
+import { isNumberAllowed } from '../config.js';
+
+// Import command handlers
+import { handleAdminCommand } from '../commands/admin.js';
+import { handleUtilityCommand } from '../commands/utility.js';
+import { handleFunCommand } from '../commands/fun.js';
+
+// Rate limiting storage
+const messageTimestamps = new Map();
+
+/**
+ * Main message handler - processes all incoming messages
+ * @param {object} sock - The WhatsApp socket instance
+ * @param {object} message - The message object from WhatsApp
+ */
+export async function handleIncomingMessage(sock, message) {
+    try {
+        // ==========================================
+        // 1. EXTRACT MESSAGE METADATA
+        // ==========================================
+        
+        const messageInfo = extractMessageInfo(message);
+        
+        if (!messageInfo) {
+            logger.debug('Could not extract message info');
+            return;
+        }
+        
+        const {
+            messageId,
+            sender,
+            senderNumber,
+            senderName,
+            isGroup,
+            groupName,
+            groupId,
+            messageType,
+            messageContent,
+            quotedMessage,
+            isFromMe
+        } = messageInfo;
+
+        // Log incoming message
+        logger.info(`📨 Message from ${senderName} (${senderNumber}): ${messageContent?.substring(0, 50)}...`);
+
+        // ==========================================
+        // 2. SECURITY CHECKS
+        // ==========================================
+        
+        // Check if sender is allowed
+        if (!isNumberAllowed(senderNumber)) {
+            logger.warn(`🚫 Blocked message from unauthorized number: ${senderNumber}`);
+            return;
+        }
+
+        // Check rate limiting
+        if (isRateLimited(senderNumber)) {
+            logger.warn(`⏱️ Rate limit exceeded for ${senderNumber}`);
+            await sendMessage(sock, sender, '⚠️ You are sending messages too quickly. Please slow down.');
+            return;
+        }
+
+        // ==========================================
+        // 3. CHECK IF IT'S A COMMAND
+        // ==========================================
+        
+        const prefix = config.BOT.PREFIX || '!';
+        const isCommand = messageContent && messageContent.startsWith(prefix);
+
+        if (isCommand) {
+            const args = messageContent.slice(prefix.length).trim().split(/\s+/);
+            const command = args.shift().toLowerCase();
+
+            logger.info(`🎯 Command detected: ${command} with ${args.length} args`);
+
+            // Route command to appropriate handler
+            const commandResult = await routeCommand(sock, message, command, args, messageInfo);
+            
+            if (!commandResult) {
+                // Unknown command
+                await sendMessage(sock, sender, `❓ Unknown command: *${command}*\n\nType *${prefix}help* for available commands.`);
+            }
+            
+            return;
+        }
+
+        // ==========================================
+        // 4. HANDLE NON-COMMAND MESSAGES
+        // ==========================================
+        
+        // Auto-reply if enabled
+        if (config.BOT.AUTO_REPLY && !isGroup) {
+            await sendMessage(sock, sender, config.BOT.AWAY_MESSAGE);
+        }
+
+        // Handle media downloads
+        if (messageType !== 'conversation' && messageType !== 'extendedTextMessage') {
+            await handleMediaMessage(sock, message, messageInfo);
+        }
+
+    } catch (error) {
+        logger.error('Error in handleIncomingMessage:', error);
+    }
+}
+
+/**
+ * Extract all relevant information from a message
+ * @param {object} message - Raw message from WhatsApp
+ * @returns {object} Extracted message information
+ */
+function extractMessageInfo(message) {
+    try {
+        const messageKey = message.key;
+        const sender = messageKey.remoteJid;
+        const isGroup = sender.endsWith('@g.us');
+        const isFromMe = messageKey.fromMe;
+
+        // Get sender's actual number
+        const senderNumber = isGroup 
+            ? messageKey.participant?.split('@')[0] 
+            : sender.split('@')[0];
+
+        // Extract message content based on type
+        const messageContent = message.message;
+        let messageText = '';
+        let messageType = Object.keys(messageContent)[0];
+        
+        // Handle different message types
+        if (messageContent.conversation) {
+            messageText = messageContent.conversation;
+        } else if (messageContent.extendedTextMessage) {
+            messageText = messageContent.extendedTextMessage.text;
+        } else if (messageContent.imageMessage) {
+            messageText = messageContent.imageMessage.caption || '';
+        } else if (messageContent.videoMessage) {
+            messageText = messageContent.videoMessage.caption || '';
+        } else if (messageContent.documentMessage) {
+            messageText = messageContent.documentMessage.caption || '';
+        }
+
+        // Get sender's name (pushName)
+        const senderName = message.pushName || senderNumber;
+
+        // Get group info if applicable
+        let groupName = null;
+        let groupId = null;
+        if (isGroup) {
+            groupId = sender;
+            groupName = sender.split('@')[0]; // Basic group name extraction
+        }
+
+        // Get quoted message if exists
+        const quotedMessage = messageContent.extendedTextMessage?.contextInfo?.quotedMessage || null;
+
+        return {
+            messageId: messageKey.id,
+            sender,
+            senderNumber,
+            senderName,
+            isGroup,
+            groupName,
+            groupId,
+            messageType,
+            messageContent: messageText,
+            quotedMessage,
+            isFromMe,
+            rawMessage: message
+        };
+
+    } catch (error) {
+        logger.error('Error extracting message info:', error);
+        return null;
+    }
+}
+
+/**
+ * Route commands to appropriate handlers
+ * @param {object} sock - WhatsApp socket
+ * @param {object} message - Original message
+ * @param {string} command - Command name
+ * @param {array} args - Command arguments
+ * @param {object} messageInfo - Extracted message info
+ * @returns {boolean} True if command was handled
+ */
+async function routeCommand(sock, message, command, args, messageInfo) {
+    try {
+        // Admin commands (require owner permission)
+        const adminCommands = ['broadcast', 'ban', 'unban', 'restart', 'eval', 'shell'];
+        if (adminCommands.includes(command)) {
+            // Check if sender is owner
+            if (messageInfo.senderNumber !== config.BOT.OWNER_NUMBER) {
+                await sendMessage(sock, messageInfo.sender, '🚫 This command is only available to the bot owner.');
+                return true;
+            }
+            return await handleAdminCommand(sock, message, command, args, messageInfo);
+        }
+
+        // Utility commands
+        const utilityCommands = ['sticker', 'download', 'calculator', 'weather', 'translate'];
+        if (utilityCommands.includes(command)) {
+            return await handleUtilityCommand(sock, message, command, args, messageInfo);
+        }
+
+        // Fun commands
+        const funCommands = ['joke', 'quote', 'meme', 'trivia', 'roll'];
+        if (funCommands.includes(command)) {
+            return await handleFunCommand(sock, message, command, args, messageInfo);
+        }
+
+        // Help command
+        if (command === 'help' || command === 'menu') {
+            return await sendHelpMessage(sock, messageInfo.sender);
+        }
+
+        // Ping command
+        if (command === 'ping') {
+            const start = Date.now();
+            await sendMessage(sock, messageInfo.sender, '🏓 Pong!');
+            const latency = Date.now() - start;
+            await sendMessage(sock, messageInfo.sender, `⚡ Response time: ${latency}ms`);
+            return true;
+        }
+
+        // Info command
+        if (command === 'info' || command === 'about') {
+            const botInfo = `
+🤖 *${config.BOT.NAME}*
+
+📦 *Version:* 1.0.0
+⚡ *Uptime:* ${formatUptime(process.uptime())}
+📝 *Prefix:* ${config.BOT.PREFIX}
+👤 *Owner:* ${config.BOT.OWNER_NUMBER}
+
+💻 *Powered by:* Baileys-z
+🏢 *Maintained by:* Ernest Tech House
+            `.trim();
+            
+            await sendMessage(sock, messageInfo.sender, botInfo);
+            return true;
+        }
+
+        return false; // Command not found
+
+    } catch (error) {
+        logger.error('Error routing command:', error);
+        await sendMessage(sock, messageInfo.sender, '❌ An error occurred while processing your command.');
+        return true;
+    }
+}
+
+/**
+ * Check if a user is rate limited
+ * @param {string} phoneNumber - User's phone number
+ * @returns {boolean} True if rate limited
+ */
+function isRateLimited(phoneNumber) {
+    const now = Date.now();
+    const oneMinuteAgo = now - 60000;
+    
+    // Get recent messages for this number
+    const recentMessages = (messageTimestamps.get(phoneNumber) || [])
+        .filter(timestamp => timestamp > oneMinuteAgo);
+    
+    // Check if over limit
+    if (recentMessages.length >= config.PERFORMANCE.RATE_LIMIT) {
+        return true;
+    }
+    
+    // Add current message
+    recentMessages.push(now);
+    messageTimestamps.set(phoneNumber, recentMessages);
+    return false;
+}
+
+/**
+ * Handle media messages (images, videos, audio, documents)
+ * @param {object} sock - WhatsApp socket
+ * @param {object} message - Original message
+ * @param {object} messageInfo - Extracted message info
+ */
+async function handleMediaMessage(sock, message, messageInfo) {
+    try {
+        const { messageType } = messageInfo;
+        
+        logger.info(`📎 Received media: ${messageType}`);
+
+        // Auto-download if enabled
+        if (config.FEATURES.MEDIA_AUTO_DOWNLOAD) {
+            const buffer = await downloadMediaMessage(
+                message,
+                'buffer',
+                {},
+                { 
+                    logger,
+                    reuploadRequest: sock.updateMediaMessage
+                }
+            );
+            
+            logger.info(`✅ Downloaded ${messageType}: ${buffer.length} bytes`);
+            
+            // You can now process the media (save, analyze, etc.)
+            // Example: Save to disk, send to AI, create sticker, etc.
+        }
+
+    } catch (error) {
+        logger.error('Error handling media message:', error);
+    }
+}
+
+/**
+ * Send a text message
+ * @param {object} sock - WhatsApp socket
+ * @param {string} jid - Recipient JID
+ * @param {string} text - Message text
+ */
+async function sendMessage(sock, jid, text) {
+    try {
+        await sock.sendMessage(jid, { text });
+        logger.debug(`📤 Sent message to ${jid}`);
+    } catch (error) {
+        logger.error('Error sending message:', error);
+    }
+}
+
+/**
+ * Send help message with available commands
+ * @param {object} sock - WhatsApp socket
+ * @param {string} jid - Recipient JID
+ */
+async function sendHelpMessage(sock, jid) {
+    const prefix = config.BOT.PREFIX;
+    const helpText = `
+🤖 *${config.BOT.NAME} - Command List*
+
+*📊 Utility Commands*
+${prefix}sticker - Convert image/video to sticker
+${prefix}download - Download media from URL
+${prefix}calculator - Perform calculations
+${prefix}weather - Get weather forecast
+${prefix}translate - Translate text
+
+*🎮 Fun Commands*
+${prefix}joke - Get a random joke
+${prefix}quote - Get an inspirational quote
+${prefix}meme - Get a random meme
+${prefix}trivia - Play trivia game
+${prefix}roll - Roll dice
+
+*ℹ️ Information*
+${prefix}ping - Check bot response time
+${prefix}info - Bot information
+${prefix}help - Show this message
+
+*Need more help?*
+Contact: ${config.BOT.OWNER_NUMBER}
+    `.trim();
+
+    await sendMessage(sock, jid, helpText);
+    return true;
+}
+
+/**
+ * Format uptime in human-readable format
+ * @param {number} seconds - Uptime in seconds
+ * @returns {string} Formatted uptime
+ */
+function formatUptime(seconds) {
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    
+    const parts = [];
+    if (days > 0) parts.push(`${days}d`);
+    if (hours > 0) parts.push(`${hours}h`);
+    if (minutes > 0) parts.push(`${minutes}m`);
+    
+    return parts.join(' ') || '<1m';
+}</code></pre>
+            </div>
+
+            <div class="explanation">
+                <h3>🔍 How It Works</h3>
+                <p><strong>The message handler follows a clear pipeline:</strong></p>
+                <ol>
+                    <li><strong>Extract:</strong> Pull sender info, message type, and content</li>
+                    <li><strong>Security:</strong> Check if sender is allowed and not rate-limited</li>
+                    <li><strong>Route:</strong> If it's a command, send to appropriate handler</li>
+                    <li><strong>Process:</strong> Handle media, auto-replies, or custom logic</li>
+                </ol>
+            </div>
+
+            <div class="warning">
+                <h3>⚠️ Critical Features</h3>
+                <ul>
+                    <li><strong>Rate Limiting:</strong> Prevents spam and reduces ban risk</li>
+                    <li><strong>Security Checks:</strong> Only allowed numbers can use the bot</li>
+                    <li><strong>Error Handling:</strong> Catches all errors to prevent crashes</li>
+                    <li><strong>Group Support:</strong> Handles both private and group messages</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="group" class="tab-content">
+            <h2>👥 handlers/group.js - Group Event Handler</h2>
+            
+            <div class="code-section">
+                <button class="copy-btn" onclick="copyCode('groupCode')">📋 Copy Code</button>
+                <pre><code id="groupCode">// handlers/group.js - Group Event Management
+
+import logger from '../logger.js';
+import config from '../config.js';
+
+/**
+ * Handle group participant updates (joins, leaves, promotions, demotions)
+ * @param {object} sock - WhatsApp socket
+ * @param {object} update - Group update event
+ */
+export async function handleGroupEvents(sock, update) {
+    try {
+        const { id, participants, action } = update;
+        
+        logger.info(`👥 Group event: ${action} in ${id}`);
+
+        // Only process if group features are enabled
+        if (!config.FEATURES.GROUPS) {
+            return;
+        }
+
+        // Get group metadata
+        const groupMetadata = await sock.groupMetadata(id);
+        const groupName = groupMetadata.subject;
+
+        // Process each participant
+        for (const participant of participants) {
+            const participantNumber = participant.split('@')[0];
+            const participantName = participantNumber; // We'll get proper name from metadata if needed
+
+            switch (action) {
+                case 'add':
+                    await handleMemberJoin(sock, id, groupName, participant, participantName);
+                    break;
+                    
+                case 'remove':
+                    await handleMemberLeave(sock, id, groupName, participant, participantName);
+                    break;
+                    
+                case 'promote':
+                    await handleMemberPromote(sock, id, groupName, participant, participantName);
+                    break;
+                    
+                case 'demote':
+                    await handleMemberDemote(sock, id, groupName, participant, participantName);
+                    break;
+            }
+        }
+
+    } catch (error) {
+        logger.error('Error handling group event:', error);
+    }
+}
+
+/**
+ * Handle member join event
+ */
+async function handleMemberJoin(sock, groupId, groupName, participant, participantName) {
+    const welcomeMessage = `
+👋 *Welcome to ${groupName}!*
+
+Hello @${participant.split('@')[0]}! 
+
+We're glad to have you here. Feel free to introduce yourself!
+
+Type *${config.BOT.PREFIX}help* to see what I can do.
+    `.trim();
+
+    try {
+        await sock.sendMessage(groupId, {
+            text: welcomeMessage,
+            mentions: [participant]
+        });
+        logger.info(`✅ Sent welcome message for ${participantName}`);
+    } catch (error) {
+        logger.error('Error sending welcome message:', error);
+    }
+}
+
+/**
+ * Handle member leave event
+ */
+async function handleMemberLeave(sock, groupId, groupName, participant, participantName) {
+    const goodbyeMessage = `
+👋 *Goodbye!*
+
+@${participant.split('@')[0]} has left the group.
+
+We'll miss you! 😢
+    `.trim();
+
+    try {
+        await sock.sendMessage(groupId, {
+            text: goodbyeMessage,
+            mentions: [participant]
+        });
+        logger.info(`✅ Sent goodbye message for ${participantName}`);
+    } catch (error) {
+        logger.error('Error sending goodbye message:', error);
+    }
+}
+
+/**
+ * Handle member promotion to admin
+ */
+async function handleMemberPromote(sock, groupId, groupName, participant, participantName) {
+    const promoteMessage = `
+👑 *New Admin!*
+
+Congratulations @${participant.split('@')[0]}!
+
+You've been promoted to group admin.
+    `.trim();
+
+    try {
+        await sock.sendMessage(groupId, {
+            text: promoteMessage,
+            mentions: [participant]
+        });
+        logger.info(`✅ Sent promotion message for ${participantName}`);
+    } catch (error) {
+        logger.error('Error sending promotion message:', error);
+    }
+}
+
+/**
+ * Handle member demotion from admin
+ */
+async function handleMemberDemote(sock, groupId, groupName, participant, participantName) {
+    const demoteMessage = `
+📉 *Admin Removed*
+
+@${participant.split('@')[0]} is no longer a group admin.
+    `.trim();
+
+    try {
+        await sock.sendMessage(groupId, {
+            text: demoteMessage,
+            mentions: [participant]
+        });
+        logger.info(`✅ Sent demotion message for ${participantName}`);
+    } catch (error) {
+        logger.error('Error sending demotion message:', error);
+    }
+}
+
+/**
+ * Get group participants list
+ * @param {object} sock - WhatsApp socket
+ * @param {string} groupId - Group JID
+ * @returns {array} List of participants
+ */
+export async function getGroupParticipants(sock, groupId) {
+    try {
+        const metadata = await sock.groupMetadata(groupId);
+        return metadata.participants;
+    } catch (error) {
+        logger.error('Error getting group participants:', error);
+        return [];
+    }
+}
+
+/**
+ * Check if a user is a group admin
+ * @param {object} sock - WhatsApp socket
+ * @param {string} groupId - Group JID
+ * @param {string} userJid - User JID
+ * @returns {boolean} True if user is admin
+ */
+export async function isGroupAdmin(sock, groupId, userJid) {
+    try {
+        const participants = await getGroupParticipants(sock, groupId);
+        const participant = participants.find(p => p.id === userJid);
+        return participant?.admin === 'admin' || participant?.admin === 'superadmin';
+    } catch (error) {
+        logger.error('Error checking admin status:', error);
+        return false;
+    }
+}</code></pre>
+            </div>
+
+            <div class="success">
+                <h3>✅ Group Features</h3>
+                <ul>
+                    <li><strong>Welcome Messages:</strong> Greet new members automatically</li>
+                    <li><strong>Goodbye Messages:</strong> Say farewell when members leave</li>
+                    <li><strong>Admin Notifications:</strong> Announce promotions/demotions</li>
+                    <li><strong>Mentions:</strong> Tag users in announcements</li>
+                    <li><strong>Admin Detection:</strong> Check if user has admin rights</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="connection" class="tab-content">
+            <h2>🔌 handlers/connection.js - Connection Management</h2>
+            
+            <div class="code-section">
+                <button class="copy-btn" onclick="copyCode('connectionCode')">📋 Copy Code</button>
+                <pre><code id="connectionCode">// handlers/connection.js - Advanced Connection Management
+
+import logger from '../logger.js';
+import config from '../config.js';
+
+/**
+ * Handle advanced connection updates
+ * @param {object} sock - WhatsApp socket
+ * @param {object} update - Connection update event
+ */
+export async function handleConnectionUpdate(sock, update) {
+    try {
+        const { connection, lastDisconnect, isNewLogin, qr } = update;
+
+        // Log connection state changes
+        if (connection) {
+            logger.info(`🔌 Connection state: ${connection}`);
+        }
+
+        // Handle new login
+        if (isNewLogin) {
+            logger.success('🎉 New login detected!');
+            await onNewLogin(sock);
+        }
+
+        // Additional QR handling
+        if (qr) {
+            logger.info('📱 QR Code ready for scanning');
+            // You can send QR via webhook, save to file, etc.
+        }
+
+        // Handle successful connection
+        if (connection === 'open') {
+            await onConnectionOpen(sock);
+        }
+
+        // Handle connection close
+        if (connection === 'close') {
+            await onConnectionClose(sock, lastDisconnect);
+        }
+
+    } catch (error) {
+        logger.error('Error in connection handler:', error);
+    }
+}
+
+/**
+ * Called when bot successfully connects
+ */
+async function onConnectionOpen(sock) {
+    logger.success('✅ Bot is now ONLINE');
+    
+    // Set bot presence
+    try {
+        await sock.sendPresenceUpdate('available');
+        logger.debug('✅ Presence set to available');
+    } catch (error) {
+        logger.warn('Could not set presence:', error.message);
+    }
+
+    // Send online notification to owner
+    if (config.BOT.OWNER_NUMBER) {
+        try {
+            const uptime = formatUptime(process.uptime());
+            const message = `
+🟢 *Bot Online*
+
+${config.BOT.NAME} is now connected!
+
+⏱️ Uptime: ${uptime}
+🕐 Time: ${new Date().toLocaleString()}
+            `.trim();
+
+            await sock.sendMessage(
+                config.BOT.OWNER_NUMBER + '@s.whatsapp.net',
+                { text: message }
+            );
+        } catch (error) {
+            logger.warn('Could not send online notification:', error.message);
+        }
+    }
+}
+
+/**
+ * Called on new login
+ */
+async function onNewLogin(sock) {
+    logger.info('🆕 Performing first-time setup...');
+    
+    // You can perform initial setup here
+    // - Load custom settings
+    // - Initialize databases
+    // - Cache group metadata
+    // - etc.
+}
+
+/**
+ * Called when connection closes
+ */
+async function onConnectionClose(sock, lastDisconnect) {
+    const reason = lastDisconnect?.error?.message || 'Unknown';
+    logger.warn(`❌ Connection closed: ${reason}`);
+    
+    // Log disconnection to owner if not a normal logout
+    if (config.BOT.OWNER_NUMBER && lastDisconnect?.error) {
+        try {
+            const message = `
+🔴 *Connection Lost*
+
+Reason: ${reason}
+Time: ${new Date().toLocaleString()}
+
+Attempting to reconnect...
+            `.trim();
+            
+            // This might fail if connection is truly lost, that's okay
+            await sock.sendMessage(
+                config.BOT.OWNER_NUMBER + '@s.whatsapp.net',
+                { text: message }
+            ).catch(() => {});
+        } catch (error) {
+            // Silent fail - connection is already closed
+        }
+    }
+}
+
+/**
+ * Format uptime in human-readable format
+ */
+function formatUptime(seconds) {
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    
+    const parts = [];
+    if (days > 0) parts.push(`${days}d`);
+    if (hours > 0) parts.push(`${hours}h`);
+    if (minutes > 0) parts.push(`${minutes}m`);
+    
+    return parts.join(' ') || '<1m';
+}</code></pre>
+            </div>
+        </div>
+
+        <div id="commands" class="tab-content">
+            <h2>⚡ Command System Overview</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>🔐 Admin Commands</h4>
+                    <p><strong>commands/admin.js</strong></p>
+                    <ul>
+                        <li>broadcast - Send to all users</li>
+                        <li>ban/unban - Block users</li>
+                        <li>restart - Restart bot</li>
+                        <li>eval - Execute code</li>
+                        <li>stats - Bot statistics</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🛠️ Utility Commands</h4>
+                    <p><strong>commands/utility.js</strong></p>
+                    <ul>
+                        <li>sticker - Create stickers</li>
+                        <li>download - Get media</li>
+                        <li>calculator - Math</li>
+                        <li>weather - Forecast</li>
+                        <li>translate - Languages</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🎮 Fun Commands</h4>
+                    <p><strong>commands/fun.js</strong></p>
+                    <ul>
+                        <li>joke - Random jokes</li>
+                        <li>quote - Inspiration</li>
+                        <li>meme - Random memes</li>
+                        <li>trivia - Quiz game</li>
+                        <li>roll - Dice roller</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>📝 Creating Custom Commands</h3>
+            <div class="code-section">
+                <button class="copy-btn" onclick="copyCode('customCommand')">📋 Copy Template</button>
+                <pre><code id="customCommand">// commands/utility.js - Example Command Handler
+
+import logger from '../logger.js';
+import config from '../config.js';
+
+/**
+ * Handle utility commands
+ * @param {object} sock - WhatsApp socket
+ * @param {object} message - Original message
+ * @param {string} command - Command name
+ * @param {array} args - Command arguments
+ * @param {object} messageInfo - Message metadata
+ * @returns {boolean} True if command was handled
+ */
+export async function handleUtilityCommand(sock, message, command, args, messageInfo) {
+    try {
+        const { sender } = messageInfo;
+
+        switch (command) {
+            case 'ping':
+                await handlePingCommand(sock, sender);
+                return true;
+
+            case 'sticker':
+                await handleStickerCommand(sock, message, messageInfo);
+                return true;
+
+            case 'calculator':
+                await handleCalculatorCommand(sock, sender, args);
+                return true;
+
+            default:
+                return false;
+        }
+    } catch (error) {
+        logger.error(`Error in utility command ${command}:`, error);
+        await sock.sendMessage(messageInfo.sender, { 
+            text: '❌ An error occurred while processing your command.' 
+        });
+        return true;
+    }
+}
+
+/**
+ * Ping command - Check bot responsiveness
+ */
+async function handlePingCommand(sock, sender) {
+    const start = Date.now();
+    
+    await sock.sendMessage(sender, { text: '🏓 Pong!' });
+    
+    const latency = Date.now() - start;
+    await sock.sendMessage(sender, { 
+        text: `⚡ Response time: ${latency}ms` 
+    });
+}
+
+/**
+ * Sticker command - Convert image/video to sticker
+ */
+async function handleStickerCommand(sock, message, messageInfo) {
+    const { sender, quotedMessage } = messageInfo;
+
+    // Check if there's a quoted image/video or attached media
+    const mediaMessage = quotedMessage || message.message;
+    
+    if (!mediaMessage.imageMessage && !mediaMessage.videoMessage) {
+        await sock.sendMessage(sender, {
+            text: '❌ Please reply to an image or video with this command.'
+        });
+        return;
+    }
+
+    try {
+        await sock.sendMessage(sender, { text: '⏳ Creating sticker...' });
+
+        // Download the media
+        const buffer = await downloadMediaMessage(
+            { message: mediaMessage },
+            'buffer',
+            {},
+            { logger }
+        );
+
+        // Send as sticker
+        await sock.sendMessage(sender, {
+            sticker: buffer
+        });
+
+        logger.info(`✅ Created sticker for ${messageInfo.senderNumber}`);
+    } catch (error) {
+        logger.error('Error creating sticker:', error);
+        await sock.sendMessage(sender, {
+            text: '❌ Failed to create sticker. Make sure the media is valid.'
+        });
+    }
+}
+
+/**
+ * Calculator command - Perform math calculations
+ */
+async function handleCalculatorCommand(sock, sender, args) {
+    if (args.length === 0) {
+        await sock.sendMessage(sender, {
+            text: '❌ Usage: !calculator <expression>\nExample: !calculator 2 + 2'
+        });
+        return;
+    }
+
+    const expression = args.join(' ');
+
+    try {
+        // Simple eval (WARNING: Never use eval in production without sanitization!)
+        // In production, use a proper math parser like mathjs
+        const sanitized = expression.replace(/[^0-9+\-*/().]/g, '');
+        const result = eval(sanitized);
+
+        await sock.sendMessage(sender, {
+            text: `🧮 *Calculator*\n\nExpression: ${expression}\nResult: ${result}`
+        });
+    } catch (error) {
+        await sock.sendMessage(sender, {
+            text: '❌ Invalid mathematical expression.'
+        });
+    }
+}</code></pre>
+            </div>
+
+            <div class="warning">
+                <h3>⚠️ Security Note</h3>
+                <p><strong>NEVER use eval() in production!</strong> The calculator example uses it for simplicity, but in production:</p>
+                <ul>
+                    <li>Use a proper math parser like <code>mathjs</code></li>
+                    <li>Sanitize ALL user input</li>
+                    <li>Implement input validation</li>
+                    <li>Set execution timeouts</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🚀 Complete File Structure</h2>
+        <div class="intro-box">
+            <h3>📁 Your Final Bot Structure</h3>
+            <pre style="background: #0d0d0d; padding: 20px; border-radius: 5px; color: #4caf50; font-family: monospace;">
+my-whatsapp-bot/
+├── index.js                    # ✅ Main entry point
+├── logger.js                   # ✅ Logging configuration
+├── config.js                   # ✅ Centralized settings
+├── handlers/
+│   ├── message.js             # ✅ Message processing
+│   ├── connection.js          # ✅ Connection management
+│   └── group.js               # ✅ Group event handling
+├── commands/
+│   ├── admin.js               # 🔜 Admin commands
+│   ├── utility.js             # ✅ Utility commands
+│   └── fun.js                 # 🔜 Fun commands
+├── .env                       # ⚙️ Environment variables
+├── package.json               # 📦 Dependencies
+└── auth_info_baileys/         # 🔐 Auto-generated auth
+            </pre>
+        </div>
+
+        <h2>📦 Installation Steps</h2>
+        <div class="code-section">
+            <h3>1. Install Dependencies</h3>
+            <pre><code>npm install baileys-z ernest-logger @hapi/boom dotenv qrcode-terminal</code></pre>
+        </div>
+
+        <div class="code-section">
+            <h3>2. Create All Files</h3>
+            <p>Copy the code from each section above into the corresponding files in your project.</p>
+        </div>
+
+        <div class="code-section">
+            <h3>3. Configure Environment</h3>
+            <pre><code># .env file
+BOT_NAME="My WhatsApp Bot"
+BOT_PREFIX="!"
+BOT_OWNER_NUMBER="254793859108"
+BOT_AUTO_REPLY="false"
+ENABLE_GROUPS="true"
+RATE_LIMIT="30"
+LOG_LEVEL="info"</code></pre>
+        </div>
+
+        <div class="code-section">
+            <h3>4. Start Your Bot</h3>
+            <pre><code>npm start</code></pre>
+        </div>
+
+        <div class="success">
+            <h3>🎉 Congratulations!</h3>
+            <p>You now have a <strong>complete, production-ready WhatsApp bot</strong> with:</p>
+            <ul>
+                <li>✅ Message processing and command routing</li>
+                <li>✅ Group event handling with welcome/goodbye messages</li>
+                <li>✅ Advanced connection management</li>
+                <li>✅ Rate limiting and security</li>
+                <li>✅ Error handling and recovery</li>
+                <li>✅ Media support (images, videos, stickers)</li>
+                <li>✅ Admin, utility, and fun commands</li>
+            </ul>
+        </div>
+
+        <footer>
+            <h3 style="color: #daa520; margin-bottom: 15px;">Ernest Tech House</h3>
+            <p><strong>Maintained by:</strong> Pease Ernest</p>
+            <div style="margin-top: 15px;">
+                <a href="mailto:peaseearnest@gmail.com">📧 Email</a> |
+                <a href="https://github.com/peaseernest/baileys-z">💻 GitHub</a> |
+                <a href="https://wa.me/254793859108">📱 WhatsApp</a>
+            </div>
+            <p style="margin-top: 20px; color: #8b6914;">© 2024 Ernest Tech House | Use responsibly</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const codeText = codeElement.textContent;
+            
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert('✅ Code copied to clipboard!');
+            }).catch(err => {
+                console.error('Copy failed:', err);
+                alert('❌ Copy failed. Please copy manually.');
+            });
+        }
+
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Highlight active button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

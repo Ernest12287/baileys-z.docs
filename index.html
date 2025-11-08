@@ -4,19 +4,438 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baileys-z Documentation | Ernest Tech House</title>
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="shortcut icon" href="./images/social_card.jpeg" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            padding: 15px 0;
+            border-bottom: 3px solid #8b6914;
+            box-shadow: 0 4px 15px rgba(218, 165, 32, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #daa520;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(218, 165, 32, 0.2);
+            color: #ffd700;
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, #8b6914 0%, #daa520 100%);
+            color: #0a0a0a;
+        }
+
+        /* Header Image */
+        .header-image {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .header-image img {
+            height: 120px;
+            width: auto;
+            border-radius: 15px;
+            border: 3px solid #daa520;
+            box-shadow: 0 6px 20px rgba(218, 165, 32, 0.4);
+        }
+
+        /* WIP Banner */
+        .wip-banner {
+            background: linear-gradient(135deg, #8b6914 0%, #b8860b 100%);
+            color: #0a0a0a;
+            padding: 12px 20px;
+            margin: 0 20px 20px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(218, 165, 32, 0.3);
+        }
+
+        /* Content Container */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* Main Heading */
+        h1 {
+            color: #daa520;
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            border-bottom: 3px solid #8b6914;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #ffd700;
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        h3 {
+            color: #daa520;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* Callout Box */
+        .callout-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border: 3px solid #daa520;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 6px 20px rgba(218, 165, 32, 0.3);
+        }
+
+        .callout-box h3 {
+            color: #ffd700;
+            margin-top: 0;
+            text-align: center;
+            font-size: 1.4em;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: #1a1a1a;
+            border-left: 5px solid #daa520;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Documentation Grid */
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .doc-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border: 2px solid #8b6914;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #8b6914 0%, #daa520 100%);
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(218, 165, 32, 0.4);
+            border-color: #daa520;
+        }
+
+        .doc-card h3 {
+            margin-top: 0;
+            color: #daa520;
+            font-size: 1.6em;
+        }
+
+        .doc-card p {
+            margin: 15px 0;
+            color: #b8860b;
+            line-height: 1.8;
+        }
+
+        .doc-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .doc-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(139, 105, 20, 0.3);
+            color: #e0e0e0;
+        }
+
+        .doc-card li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-left: 10px;
+            box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+        }
+
+        .badge.coming-soon {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+            box-shadow: 0 2px 5px rgba(255, 152, 0, 0.3);
+        }
+
+        .doc-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b6914 0%, #daa520 100%);
+            color: #0a0a0a;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .doc-link:hover {
+            background: linear-gradient(135deg, #daa520 0%, #ffd700 100%);
+            transform: translateX(5px);
+        }
+
+        /* Progress Tracker */
+        .progress-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border: 2px solid #8b6914;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .progress-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #0f0f0f;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .progress-item.incomplete {
+            border-left-color: #ff9800;
+        }
+
+        .progress-icon {
+            font-size: 2em;
+            margin-right: 20px;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .progress-content h4 {
+            color: #daa520;
+            margin-bottom: 5px;
+        }
+
+        .progress-content p {
+            color: #b8860b;
+            margin: 0;
+        }
+
+        /* Community Callout */
+        .community-callout {
+            background: linear-gradient(135deg, #2d2416 0%, #1a1a1a 100%);
+            border: 2px solid #8b6914;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .community-callout h3 {
+            color: #ffd700;
+            margin-top: 0;
+        }
+
+        /* Lists */
+        ul.feature-list {
+            list-style: none;
+            margin: 20px 0;
+            padding-left: 0;
+        }
+
+        ul.feature-list li {
+            padding: 10px 0;
+            font-size: 1.1em;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: #1a1a1a;
+            border: 2px solid #8b6914;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        code {
+            color: #ffd700;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 50px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border-radius: 12px;
+            border: 2px solid #8b6914;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #8b6914 0%, #daa520 100%);
+            color: #0a0a0a;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+            box-shadow: 0 4px 10px rgba(218, 165, 32, 0.3);
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #daa520 0%, #ffd700 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(218, 165, 32, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            color: #e0e0e0;
+            padding: 30px 20px;
+            margin-top: auto;
+            border-top: 3px solid #8b6914;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        footer a {
+            color: #daa520;
+            margin: 0 10px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffd700;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #8b6914;
+            margin: 40px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .doc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .cta-button {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <span class="nav-brand">Baileys-z Docs</span>
             <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="./pages/instalation.html" class="nav-link">Installation</a>
-                <a href="./pages/initialize.html" class="nav-link">Initialization</a>
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#getting-started" class="nav-link">Getting Started</a>
+                <a href="#documentation" class="nav-link">Documentation</a>
+                <a href="#community" class="nav-link">Community</a>
             </div>
         </div>
     </nav>
@@ -25,11 +444,6 @@
     <div class="header-image">
         <img src="./images/social_card.jpeg" alt="Baileys-z Logo">
     </div>
-    
-    <!-- Work in Progress Banner -->
-    <div class="wip-banner">
-        <strong>📝 Work in Progress:</strong> This documentation is actively being developed. Some links may not be live yet. Check back soon for updates!
-    </div>
 
     <main class="content">
         <!-- Main Title -->
@@ -37,146 +451,281 @@
 
         <!-- Focus Callout -->
         <div class="callout-box">
-            <h3>⭐ DOCUMENTATION FOCUS: EXTREME DETAIL ⭐</h3>
+            <h3>⭐ COMPREHENSIVE WHATSAPP AUTOMATION GUIDE ⭐</h3>
             <p>
-                This documentation provides <strong>every single detail</strong> you need. We explain <strong>line-by-line</strong> what the code does, why it matters, and how to maintain a stable bot. This isn't a quick-start guide—it's a <strong>Developer's Blueprint</strong> designed for serious WhatsApp automation.
+                This documentation provides <strong>everything you need</strong> to build production-ready WhatsApp bots. From installation to advanced features, we explain <strong>line-by-line</strong> what the code does, why it matters, and how to build stable, scalable automation.
             </p>
         </div>
 
-        <!-- Introduction -->
-        <section class="intro-section">
-            <p>
-                Welcome to the official documentation for <strong>Baileys-z</strong>, brought to you by <strong>Ernest Tech House</strong> and maintained by <strong>Pease Ernest</strong>.
-            </p>
+        <!-- Quick Start Guide -->
+        <section id="getting-started">
+            <h2>🚀 Quick Start Guide</h2>
+            
+            <div class="progress-section">
+                <h3 style="color: #daa520; margin-top: 0;">Your Learning Path</h3>
+                
+                <div class="progress-item">
+                    <div class="progress-icon">✅</div>
+                    <div class="progress-content">
+                        <h4>1. Installation</h4>
+                        <p>Set up Node.js, FFmpeg, and all dependencies</p>
+                    </div>
+                </div>
 
-            <p>
-                This library was created to provide developers with a <strong>highly maintained fork of Baileys</strong> that prioritizes speed, stability, and direct developer support. When you encounter bugs, you can report them directly to me, and I'll either fix them immediately or escalate them to the main Baileys repository.
-            </p>
+                <div class="progress-item">
+                    <div class="progress-icon">✅</div>
+                    <div class="progress-content">
+                        <h4>2. Initialization</h4>
+                        <p>Understand connection management and authentication</p>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-icon">✅</div>
+                    <div class="progress-content">
+                        <h4>3. Logger Setup</h4>
+                        <p>Professional logging with Ernest-logger</p>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-icon">✅</div>
+                    <div class="progress-content">
+                        <h4>4. Configuration</h4>
+                        <p>Centralized config management</p>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-icon">✅</div>
+                    <div class="progress-content">
+                        <h4>5. Message Handlers</h4>
+                        <p>Process messages, route commands, handle media</p>
+                    </div>
+                </div>
+
+                <div class="progress-item incomplete">
+                    <div class="progress-icon">🔜</div>
+                    <div class="progress-content">
+                        <h4>6. Advanced Commands</h4>
+                        <p>Build powerful bot commands and features</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <hr>
 
-        <!-- What is Baileys-z Section -->
-        <section class="what-is-section">
-            <h2>🔌 What is Baileys-z?</h2>
-
-            <p>
-                Baileys-z is a <strong>lightweight, WebSocket-based library</strong> for connecting to WhatsApp programmatically. Built on the community-maintained <a href="http://baileys.wiki" target="_blank" rel="noopener noreferrer">Baileys v7.0.0rc</a>, it inherits all the core functionality while adding:
-            </p>
-
-            <ul class="feature-list">
-                <li>⚡ <strong>Performance optimizations</strong> for faster connection handling</li>
-                <li>🛠️ <strong>Minor tweaks</strong> for improved stability</li>
-                <li>💬 <strong>Direct support</strong> from Ernest Tech House</li>
-                <li>📦 <strong>Seamless integration</strong> with Ernest Tech House ecosystem tools</li>
-            </ul>
-
-            <div class="info-box">
-                <p><strong>Version Info:</strong> Baileys-z builds directly on <strong>Baileys v7.0.0rc</strong>, currently the most actively maintained version of the library. The original maintainer (Adjwashing) has passed the project to community stewardship.</p>
-            </div>
-
-            <h3>Quick Example</h3>
-            <p>Here's how simple it is to get started with Baileys-z:</p>
+        <!-- Documentation Grid -->
+        <section id="documentation">
+            <h2>📚 Complete Documentation</h2>
             
-            <pre><code>import makeWASocket from 'baileys-z';
+            <div class="doc-grid">
+                <!-- Installation Guide -->
+                <div class="doc-card" onclick="window.location.href='./pages/instalation.html'">
+                    <h3>📦 Installation Guide <span class="badge">Complete</span></h3>
+                    <p>Set up your development environment from scratch</p>
+                    <ul>
+                        <li>✅ Node.js installation</li>
+                        <li>✅ FFmpeg setup</li>
+                        <li>✅ IDE configuration</li>
+                        <li>✅ Package installation</li>
+                    </ul>
+                    <a href="./pages/instalation.html" class="doc-link">Start Here →</a>
+                </div>
 
-const sock = makeWASocket({
-    printQRInTerminal: true
-});
+                <!-- Initialization Guide -->
+                <div class="doc-card" onclick="window.location.href='./pages/initialize.html'">
+                    <h3>🚀 Initialization <span class="badge">Complete</span></h3>
+                    <p>Build the core connection system</p>
+                    <ul>
+                        <li>✅ Connection management</li>
+                        <li>✅ Authentication persistence</li>
+                        <li>✅ Self-healing reconnection</li>
+                        <li>✅ Event handling</li>
+                    </ul>
+                    <a href="./pages/initialize.html" class="doc-link">Learn More →</a>
+                </div>
 
-sock.ev.on('connection.update', (update) => {
-    console.log('Connection status:', update);
-});</code></pre>
+                <!-- Logger Guide -->
+                <div class="doc-card" onclick="window.location.href='./pages/logger.html'">
+                    <h3>📝 Logger Configuration <span class="badge">Complete</span></h3>
+                    <p>Professional logging with Ernest-logger</p>
+                    <ul>
+                        <li>✅ Log levels and colors</li>
+                        <li>✅ Timestamp tracking</li>
+                        <li>✅ Debugging strategies</li>
+                        <li>✅ Production logging</li>
+                    </ul>
+                    <a href="./pages/logger.html" class="doc-link">View Guide →</a>
+                </div>
+
+                <!-- Config Guide -->
+                <div class="doc-card" onclick="window.location.href='./pages/config.html'">
+                    <h3>⚙️ Configuration <span class="badge">Complete</span></h3>
+                    <p>Centralized settings management</p>
+                    <ul>
+                        <li>✅ Environment variables</li>
+                        <li>✅ Security settings</li>
+                        <li>✅ Performance tuning</li>
+                        <li>✅ Feature toggles</li>
+                    </ul>
+                    <a href="./pages/config.html" class="doc-link">Configure →</a>
+                </div>
+
+                <!-- Message Handlers -->
+                <div class="doc-card" onclick="window.location.href='#message-handlers'">
+                    <h3>💬 Message Handlers <span class="badge">Complete</span></h3>
+                    <p>Process and route all incoming messages</p>
+                    <ul>
+                        <li>✅ Message extraction</li>
+                        <li>✅ Command routing</li>
+                        <li>✅ Media handling</li>
+                        <li>✅ Rate limiting</li>
+                    </ul>
+                    <a href="./pages/messagehandler.html" class="doc-link">Build Handlers →</a>
+                </div>
+                                <div class="doc-card" onclick="window.location.href='#complete-index'">
+                    <h3>🏗️ Complete How to set up config.js <span class="badge">Complete</span></h3>
+                    <p>Production-ready main entry point</p>
+                    <ul>
+                        <li>✅ All imports and setup</li>
+                        <li>✅ Event listeners</li>
+                        <li>✅ Graceful shutdown</li>
+                        <li>✅ Error handling</li>
+                    </ul>
+                    <a href="nextpush" class="doc-link">next update →</a>
+                </div>
+                                <div class="doc-card" onclick="window.location.href='#complete-index'">
+                    <h3>🏗️ Complete How to impliment logger <span class="badge">Complete</span></h3>
+                    <p>Production-ready main entry point</p>
+                    <ul>
+                        <li>✅ All imports and setup</li>
+                        <li>✅ Event listeners</li>
+                        <li>✅ All Logging utils</li>
+                        <li>✅ Error handling</li>
+                    </ul>
+                    <a href="./pages/implimentlogger.html" class="doc-link">View Code →</a>
+                </div>
+
+                <!-- Complete index.js -->
+                <div class="doc-card" onclick="window.location.href='#complete-index'">
+                    <h3>🏗️ Complete index.js <span class="badge">Complete</span></h3>
+                    <p>Production-ready main entry point</p>
+                    <ul>
+                        <li>✅ All imports and setup</li>
+                        <li>✅ Event listeners</li>
+                        <li>✅ Graceful shutdown</li>
+                        <li>✅ Error handling</li>
+                    </ul>
+                    <a href="./pages/index.html" class="doc-link">View Code →</a>
+                </div>
+
+                <!-- Commands System -->
+                <div class="doc-card">
+                    <h3>⚡ Commands System <span class="badge coming-soon">Coming Soon</span></h3>
+                    <p>Build powerful bot commands</p>
+                    <ul>
+                        <li>🔜 Admin commands</li>
+                        <li>🔜 Utility commands</li>
+                        <li>🔜 Fun commands</li>
+                        <li>🔜 Custom commands</li>
+                    </ul>
+                    <span class="doc-link" style="opacity: 0.6; cursor: not-allowed;">In Development</span>
+                </div>
+
+                <!-- Database Integration -->
+                <div class="doc-card">
+                    <h3>💾 Database Integration <span class="badge coming-soon">Coming Soon</span></h3>
+                    <p>Store and manage bot data</p>
+                    <ul>
+                        <li>🔜 User management</li>
+                        <li>🔜 Chat history</li>
+                        <li>🔜 Settings storage</li>
+                        <li>🔜 Analytics</li>
+                    </ul>
+                    <span class="doc-link" style="opacity: 0.6; cursor: not-allowed;">In Development</span>
+                </div>
+
+                <!-- Deployment -->
+                <div class="doc-card">
+                    <h3>🌐 Deployment <span class="badge coming-soon">Coming Soon</span></h3>
+                    <p>Deploy your bot to production</p>
+                    <ul>
+                        <li>🔜 VPS setup</li>
+                        <li>🔜 PM2 process management</li>
+                        <li>🔜 Docker containers</li>
+                        <li>🔜 Monitoring</li>
+                    </ul>
+                    <span class="doc-link" style="opacity: 0.6; cursor: not-allowed;">In Development</span>
+                </div>
+            </div>
         </section>
 
         <hr>
 
         <!-- Ecosystem Section -->
-        <section class="ecosystem-section">
+        <section>
             <h2>🧰 Ernest Tech House Ecosystem</h2>
 
-            <p>
-                Throughout this documentation, we exclusively use libraries developed by Ernest Tech House to ensure seamless integration and optimal performance:
-            </p>
+            <div class="info-box">
+                <p>
+                    Throughout this documentation, we exclusively use libraries developed by Ernest Tech House to ensure seamless integration:
+                </p>
+            </div>
 
-            <ul class="tool-list">
+            <ul class="feature-list">
                 <li><strong>baileys-z</strong> — The core WhatsApp automation library</li>
-                <li><strong>ernest-logger</strong> — Professional logging utility for debugging</li>
+                <li><strong>ernest-logger</strong> — Professional logging utility</li>
                 <li><strong>@peaseernest/system-info</strong> — System information tracking</li>
                 <li><em>...and more tools coming soon</em></li>
             </ul>
-
-            <p>
-                This ecosystem approach guarantees that all components work together flawlessly, reducing configuration headaches and integration issues.
-            </p>
         </section>
 
         <hr>
 
         <!-- Community Section -->
-        <section class="community-section">
-            <h2>🎥 Video Tutorials & Community Contribution</h2>
-
-            <p>
-                We're preparing <strong>comprehensive video tutorials</strong> covering the entire setup process. Initial videos will feature installations on <strong>MX Linux</strong> (my development environment).
-            </p>
+        <section id="community">
+            <h2>🎥 Community & Contribution</h2>
 
             <div class="community-callout">
                 <h3>🤝 We Need Your Help!</h3>
                 <p>
-                    If you use <strong>Windows</strong> or <strong>macOS</strong> and can share a screen recording of your installation process, we'd love to include it in this documentation. Your contribution will help developers on all platforms get started faster.
+                    We're preparing <strong>comprehensive video tutorials</strong> for the entire setup process. Initial videos will feature installations on <strong>MX Linux</strong>.
                 </p>
-                <p>
-                    <strong>Contact me:</strong> Use the WhatsApp link in the footer below to get in touch!
+                <p style="margin-top: 15px;">
+                    If you use <strong>Windows</strong> or <strong>macOS</strong> and can share a screen recording of your installation, we'd love to include it! Your contribution helps developers worldwide.
                 </p>
             </div>
-        </section>
-
-        <hr>
-
-        <!-- Why This Matters -->
-        <section class="why-section">
-            <h2>💡 Why Detailed Documentation Matters</h2>
-
-            <p>
-                The WhatsApp automation community is vibrant and rapidly growing. Developers worldwide are building incredible bots, and the technology's potential is limitless. However, many struggle with:
-            </p>
-
-            <ul>
-                <li>Understanding <em>why</em> code works, not just <em>how</em></li>
-                <li>Debugging connection issues and authentication problems</li>
-                <li>Maintaining stable, production-ready bots</li>
-            </ul>
-
-            <p>
-                This documentation solves those problems by providing deep technical explanations, real-world examples, and battle-tested best practices. You won't just copy-paste code—you'll <strong>understand it</strong>.
-            </p>
         </section>
 
         <hr>
 
         <!-- Call to Action -->
         <div class="cta-section">
-            <h2>🚀 Ready to Start?</h2>
-            <p>Let's dive into the installation process and get your first Baileys-z bot running!</p>
+            <h2>🚀 Ready to Build?</h2>
+            <p>Start your WhatsApp automation journey today!</p>
             
-            <button class="cta-button">
-                <a href="./pages/instalation.html">Next Page: Installation →</a>
-            </button>
+            <a href="./pages/instalation.html" class="cta-button">
+                Begin Installation →
+            </a>
+            <a href="https://github.com/peaseernest/baileys-z" target="_blank" class="cta-button" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%); color: #daa520; border: 2px solid #8b6914;">
+                View on GitHub
+            </a>
         </div>
     </main>
     
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
+        <div style="max-width: 800px; margin: 0 auto;">
             <h3 style="color: #daa520; margin-bottom: 15px;">Ernest Tech House</h3>
             <p><strong>Maintained by:</strong> Pease Ernest</p>
             
-            <div class="footer-links">
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #8b6914;">
                 <p><strong>Contact & Resources</strong></p>
                 <p>
                     <a href="mailto:peaseearnest@gmail.com">📧 peaseearnest@gmail.com</a> |
-                    <a href="https://github.com/peaseernest/baileys-z" target="_blank">💻 GitHub Repository</a> |
+                    <a href="https://github.com/peaseernest/baileys-z" target="_blank">💻 GitHub</a> |
                     <a href="https://wa.me/254793859108" target="_blank">📱 WhatsApp: +254793859108</a>
                 </p>
             </div>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete index.js - Baileys-z Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 3px solid #daa520;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #daa520;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        h2 {
+            color: #ffd700;
+            font-size: 2em;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8b6914;
+        }
+
+        h3 {
+            color: #daa520;
+            font-size: 1.5em;
+            margin: 20px 0 15px 0;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border: 3px solid #daa520;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .code-section {
+            background-color: #1a1a1a;
+            border: 2px solid #8b6914;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #8b6914 0%, #daa520 100%);
+            color: #0a0a0a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: linear-gradient(135deg, #daa520 0%, #ffd700 100%);
+            transform: translateY(-2px);
+        }
+
+        pre {
+            background-color: #0d0d0d;
+            border-radius: 5px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-top: 50px;
+        }
+
+        code {
+            color: #ffd700;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .explanation {
+            background-color: #0f0f0f;
+            border-left: 5px solid #daa520;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning {
+            background-color: #2d1a1a;
+            border-left: 5px solid #ff6b6b;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .success {
+            background-color: #1a2d1a;
+            border-left: 5px solid #4caf50;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border: 2px solid #8b6914;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .feature-item h4 {
+            color: #daa520;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .file-structure {
+            background-color: #0d0d0d;
+            border: 2px solid #8b6914;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            color: #4caf50;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2416 100%);
+            border-top: 3px solid #8b6914;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #daa520;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Complete index.js Implementation</h1>
+            <p style="color: #b8860b; margin-top: 10px;">Production-Ready WhatsApp Bot with All Features</p>
+        </div>
+
+        <div class="intro-box">
+            <h3>📖 What You'll Learn</h3>
+            <p>This guide shows you how to build a <strong>complete, production-ready index.js</strong> that integrates:</p>
+            <ul>
+                <li>✅ Logger configuration for debugging</li>
+                <li>✅ Centralized config management</li>
+                <li>✅ Message handling system</li>
+                <li>✅ Self-healing reconnection logic</li>
+                <li>✅ Event listeners for all WhatsApp events</li>
+                <li>✅ Error handling and recovery</li>
+            </ul>
+        </div>
+
+        <h2>🏗️ Your Final Project Structure</h2>
+        <div class="file-structure">
+my-whatsapp-bot/
+├── index.js                 # ✅ Main entry point (what we're building)
+├── logger.js               # ✅ Logging configuration
+├── config.js               # ✅ Centralized settings
+├── handlers/
+│   ├── message.js          # 🔄 Message processing logic
+│   ├── connection.js       # 🔄 Connection event handling
+│   └── group.js            # 🔄 Group event handling
+├── commands/
+│   ├── admin.js            # 🔄 Admin commands
+│   ├── utility.js          # 🔄 Utility commands
+│   └── fun.js              # 🔄 Fun commands
+├── .env                    # ⚙️ Environment variables
+├── package.json            # 📦 Dependencies
+└── auth_info_baileys/      # 🔐 Auto-generated authentication
+        </div>
+
+        <h2>📝 The Complete index.js Code</h2>
+        <div class="code-section">
+            <button class="copy-btn" onclick="copyCode('mainCode')">📋 Copy Code</button>
+            <pre><code id="mainCode">// index.js - The Complete WhatsApp Bot Entry Point
+
+// ============================================
+// 1. IMPORTS - Bringing in all dependencies
+// ============================================
+
+// Core Baileys-z imports
+import makeWASocket, {
+    useMultiFileAuthState,
+    fetchLatestBaileysVersion,
+    DisconnectReason,
+    delay,
+    makeCacheableSignalKeyStore,
+    Browsers
+} from 'baileys-z';
+
+// Error handling
+import { Boom } from '@hapi/boom';
+
+// Our custom modules
+import logger from './logger.js';
+import config from './config.js';
+
+// Message handlers (we'll create these next)
+import { handleIncomingMessage } from './handlers/message.js';
+import { handleConnectionUpdate } from './handlers/connection.js';
+import { handleGroupEvents } from './handlers/group.js';
+
+// ============================================
+// 2. GLOBAL STATE MANAGEMENT
+// ============================================
+
+let sock = null; // The socket connection instance
+let reconnectAttempts = 0; // Track reconnection attempts
+const MAX_RECONNECT_ATTEMPTS = config.CONNECTION.MAX_RECONNECT_ATTEMPTS || 5;
+const RECONNECT_DELAY = config.CONNECTION.RECONNECT_DELAY || 5000;
+
+// ============================================
+// 3. MAIN CONNECTION FUNCTION
+// ============================================
+
+async function connectToWhatsApp() {
+    try {
+        // Load authentication state from disk
+        const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys');
+        
+        // Fetch latest WhatsApp version for compatibility
+        const { version, isLatest } = await fetchLatestBaileysVersion();
+        logger.info(`Using WhatsApp v${version.join('.')}, isLatest: ${isLatest}`);
+
+        // Create the WhatsApp socket connection
+        sock = makeWASocket({
+            version,
+            logger: logger,
+            auth: {
+                creds: state.creds,
+                keys: makeCacheableSignalKeyStore(state.keys, logger)
+            },
+            browser: Browsers.ubuntu(config.BOT.NAME || 'Baileys-z Bot'),
+            printQRInTerminal: true,
+            generateHighQualityLinkPreview: true,
+            syncFullHistory: false,
+            markOnlineOnConnect: true,
+            
+            // Message retry configuration
+            msgRetryCounterCache: new Map(),
+            defaultQueryTimeoutMs: undefined,
+            
+            // Connection options
+            connectTimeoutMs: 60_000,
+            keepAliveIntervalMs: 30_000,
+        });
+
+        // ============================================
+        // 4. EVENT LISTENERS - The Bot's Nervous System
+        // ============================================
+
+        // CRITICAL: Save credentials whenever they update
+        sock.ev.on('creds.update', saveCreds);
+
+        // Handle connection state changes (open, close, connecting)
+        sock.ev.on('connection.update', async (update) => {
+            const { connection, lastDisconnect, qr } = update;
+
+            if (qr) {
+                logger.info('📱 QR Code generated. Scan with WhatsApp Linked Devices.');
+            }
+
+            if (connection === 'close') {
+                const shouldReconnect = lastDisconnect?.error instanceof Boom
+                    ? lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut
+                    : true;
+
+                logger.error(`Connection closed. Reason: ${lastDisconnect?.error?.message}`);
+
+                if (shouldReconnect && reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+                    reconnectAttempts++;
+                    logger.warn(`Reconnecting... Attempt ${reconnectAttempts}/${MAX_RECONNECT_ATTEMPTS}`);
+                    await delay(RECONNECT_DELAY);
+                    connectToWhatsApp(); // Restart connection
+                } else if (reconnectAttempts >= MAX_RECONNECT_ATTEMPTS) {
+                    logger.error('❌ Max reconnection attempts reached. Bot stopped.');
+                    process.exit(1); // Exit if we can't reconnect
+                } else {
+                    logger.info('🔴 Bot logged out. Restart to login again.');
+                    process.exit(0);
+                }
+            } else if (connection === 'open') {
+                logger.success('✅ Successfully connected to WhatsApp!');
+                reconnectAttempts = 0; // Reset counter on successful connection
+                
+                // Send startup notification (optional)
+                if (config.BOT.OWNER_NUMBER) {
+                    try {
+                        await sock.sendMessage(
+                            config.BOT.OWNER_NUMBER + '@s.whatsapp.net',
+                            { text: `🤖 ${config.BOT.NAME} is now online!` }
+                        );
+                    } catch (err) {
+                        logger.warn('Could not send startup notification:', err.message);
+                    }
+                }
+            }
+
+            // Pass connection updates to handler for additional processing
+            if (handleConnectionUpdate) {
+                await handleConnectionUpdate(sock, update);
+            }
+        });
+
+        // Handle incoming messages
+        sock.ev.on('messages.upsert', async ({ messages, type }) => {
+            try {
+                // Only process new messages
+                if (type !== 'notify') return;
+
+                for (const message of messages) {
+                    // Ignore messages from yourself
+                    if (message.key.fromMe) continue;
+                    
+                    // Ignore status updates
+                    if (message.key.remoteJid === 'status@broadcast') continue;
+
+                    // Process the message
+                    await handleIncomingMessage(sock, message);
+                }
+            } catch (error) {
+                logger.error('Error processing message:', error);
+            }
+        });
+
+        // Handle message reactions
+        sock.ev.on('messages.reaction', async ({ key, reaction }) => {
+            logger.debug(`Reaction ${reaction.text} on message ${key.id}`);
+        });
+
+        // Handle group participant updates (joins, leaves, promotions)
+        sock.ev.on('group-participants.update', async (update) => {
+            try {
+                await handleGroupEvents(sock, update);
+            } catch (error) {
+                logger.error('Error handling group event:', error);
+            }
+        });
+
+        // Handle presence updates (typing, recording, online)
+        sock.ev.on('presence.update', ({ id, presences }) => {
+            const presence = presences[id.split('@')[0]];
+            if (presence) {
+                logger.debug(`${id} is ${presence.lastKnownPresence}`);
+            }
+        });
+
+        // Handle message deletions
+        sock.ev.on('messages.delete', (deletion) => {
+            logger.debug('Message deleted:', deletion);
+        });
+
+        // Handle call events (optional: auto-reject calls)
+        sock.ev.on('call', async (calls) => {
+            for (const call of calls) {
+                logger.info(`📞 Incoming ${call.isGroup ? 'group' : ''} ${call.isVideo ? 'video' : 'voice'} call from ${call.from}`);
+                
+                // Auto-reject calls if configured
+                if (config.FEATURES.AUTO_REJECT_CALLS) {
+                    await sock.rejectCall(call.id, call.from);
+                    logger.info('🚫 Call automatically rejected');
+                }
+            }
+        });
+
+        return sock;
+
+    } catch (error) {
+        logger.error('Fatal error in connectToWhatsApp:', error);
+        
+        // Wait before retrying
+        await delay(RECONNECT_DELAY);
+        
+        if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+            reconnectAttempts++;
+            logger.warn(`Retrying connection... Attempt ${reconnectAttempts}/${MAX_RECONNECT_ATTEMPTS}`);
+            return connectToWhatsApp();
+        } else {
+            logger.error('❌ Could not establish connection. Exiting...');
+            process.exit(1);
+        }
+    }
+}
+
+// ============================================
+// 5. GRACEFUL SHUTDOWN HANDLING
+// ============================================
+
+async function gracefulShutdown(signal) {
+    logger.warn(`\n⚠️  Received ${signal}. Shutting down gracefully...`);
+    
+    try {
+        if (sock) {
+            // Send shutdown notification (optional)
+            if (config.BOT.OWNER_NUMBER) {
+                try {
+                    await sock.sendMessage(
+                        config.BOT.OWNER_NUMBER + '@s.whatsapp.net',
+                        { text: `🔴 ${config.BOT.NAME} is shutting down...` }
+                    );
+                } catch (err) {
+                    logger.warn('Could not send shutdown notification');
+                }
+            }
+            
+            // Close the connection
+            await sock.logout();
+            logger.info('✅ Bot logged out successfully');
+        }
+    } catch (error) {
+        logger.error('Error during shutdown:', error);
+    } finally {
+        process.exit(0);
+    }
+}
+
+// Register shutdown handlers
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+
+// Handle uncaught errors
+process.on('uncaughtException', (error) => {
+    logger.error('❌ Uncaught Exception:', error);
+    gracefulShutdown('uncaughtException');
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    logger.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+// ============================================
+// 6. START THE BOT
+// ============================================
+
+logger.info('🚀 Starting Baileys-z Bot...');
+logger.info(`📝 Bot Name: ${config.BOT.NAME}`);
+logger.info(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);
+
+connectToWhatsApp().catch((error) => {
+    logger.error('Failed to start bot:', error);
+    process.exit(1);
+});</code></pre>
+        </div>
+
+        <h2>🔍 Code Breakdown: Understanding Every Section</h2>
+
+        <div class="explanation">
+            <h3>Section 1: Imports</h3>
+            <p><strong>What it does:</strong> Brings in all necessary modules and dependencies.</p>
+            <ul>
+                <li><code>makeWASocket</code> - Creates the WebSocket connection</li>
+                <li><code>useMultiFileAuthState</code> - Manages authentication persistence</li>
+                <li><code>fetchLatestBaileysVersion</code> - Gets recommended WhatsApp version</li>
+                <li><code>DisconnectReason</code> - Constants for disconnection causes</li>
+                <li><code>delay</code> - Helper for async delays</li>
+                <li><code>makeCacheableSignalKeyStore</code> - Optimized key storage</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h3>Section 2: Global State</h3>
+            <p><strong>Why it matters:</strong> Tracks connection state and reconnection attempts across the application.</p>
+            <ul>
+                <li><code>sock</code> - The main socket instance (accessible throughout)</li>
+                <li><code>reconnectAttempts</code> - Prevents infinite reconnection loops</li>
+                <li>Constants from config for reconnection behavior</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ Critical Configuration</h3>
+            <p><strong>The socket options matter!</strong></p>
+            <ul>
+                <li><code>syncFullHistory: false</code> - Prevents downloading all message history (faster startup)</li>
+                <li><code>markOnlineOnConnect: true</code> - Shows "online" status when bot connects</li>
+                <li><code>connectTimeoutMs: 60_000</code> - 60-second timeout for initial connection</li>
+                <li><code>keepAliveIntervalMs: 30_000</code> - Send keep-alive every 30 seconds</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h3>Section 4: Event Listeners - The Magic!</h3>
+            <p><strong>This is where your bot comes alive.</strong> Each event listener responds to specific WhatsApp events:</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>creds.update</h4>
+                    <p>Fires whenever WhatsApp updates encryption keys. <strong>CRITICAL:</strong> Must save immediately or bot will log out!</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>connection.update</h4>
+                    <p>Tracks connection state (open, close, connecting). Implements self-healing reconnection logic.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>messages.upsert</h4>
+                    <p>New incoming messages. This is where you process commands and respond to users.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>group-participants.update</h4>
+                    <p>Someone joined, left, or was promoted in a group. Great for welcome/goodbye messages.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>presence.update</h4>
+                    <p>Typing indicators, recording audio, online/offline status updates.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>call</h4>
+                    <p>Incoming voice/video calls. You can auto-reject these to prevent spam.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="success">
+            <h3>✅ Self-Healing Reconnection Logic</h3>
+            <p>The bot automatically recovers from:</p>
+            <ul>
+                <li>🌐 Internet disconnections</li>
+                <li>📱 Phone restarts</li>
+                <li>🔄 WhatsApp server updates</li>
+                <li>⚡ Temporary network failures</li>
+            </ul>
+            <p><strong>How it works:</strong> Tracks reconnection attempts with exponential backoff. After 5 failures, exits gracefully.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Section 5: Graceful Shutdown</h3>
+            <p><strong>Why this matters:</strong> Prevents data corruption and ensures clean logout when you stop the bot with Ctrl+C.</p>
+            <ul>
+                <li>Sends shutdown notification to owner</li>
+                <li>Properly logs out (saves authentication state)</li>
+                <li>Handles SIGINT and SIGTERM signals</li>
+                <li>Catches uncaught exceptions</li>
+            </ul>
+        </div>
+
+        <h2>🚀 Running Your Bot</h2>
+        
+        <div class="code-section">
+            <h3>Step 1: Make sure you have all files</h3>
+            <pre><code>✅ index.js (the code above)
+✅ logger.js (from previous section)
+✅ config.js (from previous section)
+✅ .env file with your settings
+📦 handlers/ folder (we'll create next)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <h3>Step 2: Update your package.json</h3>
+            <pre><code>{
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "NODE_ENV=development node index.js"
+  },
+  "dependencies": {
+    "baileys-z": "latest",
+    "ernest-logger": "latest",
+    "@hapi/boom": "^10.0.1",
+    "dotenv": "^16.0.3"
+  }
+}</code></pre>
+        </div>
+
+        <div class="code-section">
+            <h3>Step 3: Start your bot!</h3>
+            <pre><code># Development mode
+npm run dev
+
+# Production mode
+npm start</code></pre>
+        </div>
+
+        <div class="success">
+            <h3>✅ What Happens Next</h3>
+            <ol>
+                <li>Bot starts and loads configuration</li>
+                <li>QR code appears in terminal (scan with WhatsApp)</li>
+                <li>Bot connects and shows "Successfully connected!"</li>
+                <li>Owner receives startup notification</li>
+                <li>Bot starts listening for messages</li>
+            </ol>
+        </div>
+
+        <h2>🎯 Next Steps</h2>
+        <div class="intro-box">
+            <p>Now that you have a complete <code>index.js</code>, we need to create the handler files:</p>
+            <ul>
+                <li><strong>handlers/message.js</strong> - Process incoming messages and commands</li>
+                <li><strong>handlers/connection.js</strong> - Advanced connection management</li>
+                <li><strong>handlers/group.js</strong> - Group event handling</li>
+                <li><strong>commands/</strong> - Individual command modules</li>
+            </ul>
+            <p style="margin-top: 15px;">📝 <em>These will be covered in the next sections!</em></p>
+        </div>
+
+        <footer>
+            <h3 style="color: #daa520; margin-bottom: 15px;">Ernest Tech House</h3>
+            <p><strong>Maintained by:</strong> Pease Ernest</p>
+            <div style="margin-top: 15px;">
+                <a href="mailto:peaseearnest@gmail.com">📧 Email</a> |
+                <a href="https://github.com/peaseernest/baileys-z">💻 GitHub</a> |
+                <a href="https://wa.me/254793859108">📱 WhatsApp</a>
+            </div>
+            <p style="margin-top: 20px; color: #8b6914;">© 2024 Ernest Tech House | Use responsibly</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const codeText = codeElement.textContent;
+            
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert('✅ Code copied to clipboard!');
+            }).catch(err => {
+                console.error('Copy failed:', err);
+                alert('❌ Copy failed. Please copy manually.');
+            });
+        }
+    </script>
+</body>
+</html>
